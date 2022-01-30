@@ -1,0 +1,30 @@
+button.btn {
+  background-color: transparent;
+  border: none;
+
+  &--submit {
+  }
+
+  &--viewSelect {
+    border: 3px solid #2770a1;
+    background-color: rgb(48, 48, 48);
+
+    img {
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+
+  &--selected {
+    border: 3px solid #38a1e7;
+    background-color: #fff;
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
