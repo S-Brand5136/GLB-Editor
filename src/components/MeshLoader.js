@@ -1,6 +1,8 @@
 import Button from "./Button";
 import Input from "./Input";
 
+import "./styles/MeshLoader.scss";
+
 const MeshLoader = () => {
   return (
     <div className='meshLoader'>
