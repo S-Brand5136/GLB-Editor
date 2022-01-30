@@ -1,0 +1,11 @@
+@use "../../styles/mixins.scss";
+
+.canvas {
+  &--hide {
+    display: none;
+  }
+
+  &--show {
+    display: absolute;
+  }
+}
