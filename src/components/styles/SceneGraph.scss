@@ -1,0 +1,11 @@
+@use "../../styles/mixins.scss";
+
+main.graph {
+  &--hide {
+    display: none;
+  }
+
+  &--show {
+    display: absolute;
+  }
+}
