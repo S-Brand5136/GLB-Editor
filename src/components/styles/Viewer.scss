@@ -1,6 +1,9 @@
 @use "../../styles/mixins.scss";
 
-.canvas {
+.viewer {
+  height: 100rem;
+  width: 100rem;
+
   &--hide {
     display: none;
   }

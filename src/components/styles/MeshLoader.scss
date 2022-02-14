@@ -1,0 +1,20 @@
+div.meshLoader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+
+  .upload-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+
+    border: 5px dashed gray;
+    padding: 10rem;
+  }
+}
