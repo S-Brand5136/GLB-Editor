@@ -16,15 +16,15 @@ const SceneGraph = (props) => {
 
   useEffect(() => {
     if (mesh) {
-      setShow(true);
+      return setShow(false);
     }
 
-    setShow(false);
+    setShow(true);
   }, [mesh]);
 
   return (
     <main className={graphClass}>
-      {show ? <h1>GLB LOADED</h1> : <MeshLoader></MeshLoader>}
+      {show ? <MeshLoader></MeshLoader> : <h1>GLB LOADED</h1>}
     </main>
   );
 };
