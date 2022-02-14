@@ -14,6 +14,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
     "sass": "^1.49.0",
+    "simple-dropzone": "^0.8.1",
     "three": "^0.137.5",
     "web-vitals": "^2.1.4"
   },
