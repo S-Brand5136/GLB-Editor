@@ -3,11 +3,18 @@ button.btn {
   border: none;
 
   &--submit {
+    background: #2770a1;
+    color: #fff;
+    border-radius: 1rem;
+    padding: 0.8rem 1.5rem 0.8rem 1.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.15rem;
   }
 
   &--viewSelect {
-    border: 3px solid #2770a1;
-    background-color: rgb(48, 48, 48);
+    border: 3px solid #38a1e7;
+    background-color: #fff;
 
     img {
       height: 3rem;
@@ -16,8 +23,8 @@ button.btn {
   }
 
   &--selected {
-    border: 3px solid #38a1e7;
-    background-color: #fff;
+    border: 3px solid #2770a1;
+    background-color: rgb(48, 48, 48);
   }
 
   &:hover {
