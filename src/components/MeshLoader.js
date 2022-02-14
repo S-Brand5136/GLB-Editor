@@ -6,12 +6,13 @@ import Input from "./Input";
 
 import "./styles/MeshLoader.scss";
 import { loadAsset } from "../helpers/loadAsset";
+import { createGraph } from "../helpers/createGraph";
 
 const MeshLoader = () => {
   let inputEl, dropZone;
   const [error, setError] = useState(null);
 
-  const { addMesh } = useContext(meshContext);
+  const { addMesh, addGraph } = useContext(meshContext);
 
   // Sets up drag and drop controller
   useEffect(() => {
@@ -45,7 +46,7 @@ const MeshLoader = () => {
     loadAsset(baseURL, rootPath, fileMap, fileURL)
       .then((data) => {
         addMesh(data.scene);
-        console.log(data);
+        addGraph(createGraph(data.scene));
       })
       .catch((error) => {
         console.log(error);
