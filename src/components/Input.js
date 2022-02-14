@@ -8,10 +8,12 @@ const Input = (props) => {
 
   return (
     <input
-      classNames={inputClass}
+      className={inputClass}
       type={props.type}
       name={props.name}
       id={props.id}
+      onChange={props.onChange}
+      onClick={props.onClick}
     />
   );
 };
