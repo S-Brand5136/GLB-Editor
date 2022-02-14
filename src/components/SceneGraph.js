@@ -15,7 +15,7 @@ const SceneGraph = (props) => {
   const { mesh } = useContext(meshContext);
 
   useEffect(() => {
-    if (mesh) {
+    if (mesh && mesh.children) {
       setShow(true);
     }
 
@@ -24,7 +24,7 @@ const SceneGraph = (props) => {
 
   return (
     <main className={graphClass}>
-      {show ? <></> : <MeshLoader></MeshLoader>}
+      {show ? <h1>GLB LOADED</h1> : <MeshLoader></MeshLoader>}
     </main>
   );
 };
