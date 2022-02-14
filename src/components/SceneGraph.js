@@ -15,7 +15,7 @@ const SceneGraph = (props) => {
   const { mesh } = useContext(meshContext);
 
   useEffect(() => {
-    if (mesh && mesh.children) {
+    if (mesh) {
       setShow(true);
     }
 
