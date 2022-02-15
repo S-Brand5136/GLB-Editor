@@ -1,8 +1,10 @@
 import { TreeNode } from "./TreeNode";
+import Node from "../components/Node";
 
 export class Tree {
   constructor(key, value = key) {
     this.root = new TreeNode(key, value);
+    this.element = <Node root title='scene' />;
   }
 
   *preOrderTraversal(node = this.root) {
