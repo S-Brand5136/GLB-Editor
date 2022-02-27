@@ -1,4 +1,4 @@
-@use "../../styles/mixins.scss";
+@import "../../styles/_variables.scss";
 
 main.graph {
   height: 100vh;
@@ -6,5 +6,11 @@ main.graph {
   position: absolute;
   right: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #111111;
+  color: $primary;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 }
