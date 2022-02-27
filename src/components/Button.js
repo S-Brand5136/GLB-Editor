@@ -7,6 +7,7 @@ const Button = (props) => {
     "btn--viewSelect": props.viewSelect,
     "btn--selected": props.selected,
     "btn--option": props.option,
+    "btn--option-selected": props.option_selected,
   });
 
   return (
