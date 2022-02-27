@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SceneGraph from "./components/SceneGraph";
+import SceneOptions from "./components/SceneOptions";
 import Viewer from "./components/Viewer";
 import Button from "./components/Button";
 
@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <div className='App'>
-      <SceneGraph show={show}></SceneGraph>
+      <SceneOptions show={show}></SceneOptions>
       <Viewer show={!show}></Viewer>
 
       <div className='btn-group'>
