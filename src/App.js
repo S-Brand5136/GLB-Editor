@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SceneOptions from "./components/SceneOptions";
 import Viewer from "./components/Viewer";
-import Button from "./components/Button";
+import Button from "./components/inputs/Button";
 
 import "./App.scss";
 

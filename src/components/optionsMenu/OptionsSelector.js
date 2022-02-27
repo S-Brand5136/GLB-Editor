@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Button from "../Button";
+import Button from "../inputs/Button";
 import "./styles/OptionsSelector.scss";
 
 import { optionsContext } from "../../providers/OptionsProvider";

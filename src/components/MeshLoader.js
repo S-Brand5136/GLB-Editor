@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { meshContext } from "../providers/MeshProvider";
 import { SimpleDropzone } from "simple-dropzone";
 import { LoaderUtils } from "three";
-import Input from "./Input";
+import Input from "./inputs/Input";
 
 import "./styles/MeshLoader.scss";
 import { loadAsset } from "../helpers/loadAsset";
