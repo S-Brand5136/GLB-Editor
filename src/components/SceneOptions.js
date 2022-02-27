@@ -1,24 +1,22 @@
 import { useContext } from "react";
-import classNames from "classnames";
-import { meshContext } from "../providers/MeshProvider";
-import OptionsProvider from "../providers/OptionsProvider";
+import { optionsContext } from "../providers/OptionsProvider";
+import ExportPane from "./optionsMenu/ExportPane";
+import ScenePane from "./optionsMenu/ScenePane";
+import SettingsPane from "./optionsMenu/SettingsPane";
 
 import "./styles/SceneOptions.scss";
-import TreeGraph from "./TreeGraph";
 import OptionsSelector from "./optionsMenu/OptionsSelector";
 
 const SceneOptions = () => {
-  let graphClass = classNames("graph", {});
-
-  const { mesh, graph } = useContext(meshContext);
+  const { selectedOption } = useContext(optionsContext);
 
   return (
-    <OptionsProvider>
-      <main className={graphClass}>
-        <OptionsSelector options={["SCENE", "EXPORT", "SETTINGS"]} />
-        <TreeGraph graph={graph}></TreeGraph>
-      </main>
-    </OptionsProvider>
+    <main className='graph'>
+      <OptionsSelector options={["SCENE", "EXPORT", "SETTINGS"]} />
+      {selectedOption === "SCENE" && <ScenePane></ScenePane>}
+      {selectedOption === "EXPORT" && <ExportPane></ExportPane>}
+      {selectedOption === "SETTINGS" && <SettingsPane></SettingsPane>}
+    </main>
   );
 };
 
