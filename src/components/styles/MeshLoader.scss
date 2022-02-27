@@ -1,3 +1,5 @@
+@import "../../styles/_variables.scss";
+
 div.meshLoader {
   display: flex;
   justify-content: center;
@@ -6,6 +8,7 @@ div.meshLoader {
   margin: auto;
   height: 100%;
   width: 100%;
+  color: $primary;
 
   .upload-form {
     display: flex;
@@ -13,8 +16,7 @@ div.meshLoader {
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-
-    border: 5px dashed gray;
+    border: 5px dashed $primary;
     padding: 10rem;
   }
 }
