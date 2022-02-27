@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 
 export default function MeshProvider(props) {
-  const [selectedOption, setSelectedOption] = useState("Scene");
+  const [selectedOption, setSelectedOption] = useState("SCENE");
 
   const updateSelectedOption = (option) => {
     setSelectedOption(option);
