@@ -3,15 +3,13 @@ import classNames from "classnames";
 import { Canvas } from "@react-three/fiber";
 import { meshContext } from "../providers/MeshProvider";
 import { OrbitControls } from "@react-three/drei";
+import MeshLoader from "./MeshLoader";
 
 import "./styles/Viewer.scss";
 
-const Viewer = (props) => {
+const Viewer = () => {
   const [show, setShow] = useState(false);
-  let viewerClass = classNames("viewer", {
-    "viewer--hide": !props.show,
-    "viewer--show": props.show,
-  });
+  let viewerClass = classNames("viewer", {});
 
   const { mesh } = useContext(meshContext);
 
@@ -23,15 +21,15 @@ const Viewer = (props) => {
 
   return (
     <main className={viewerClass}>
-      {show ? (
+      {!show ? (
+        <MeshLoader />
+      ) : (
         <Canvas>
           <OrbitControls />
           <ambientLight intensity={1} />
           <directionalLight color='white' position={[-2, -3, 5]} />
           <primitive object={mesh} />
         </Canvas>
-      ) : (
-        <h1>No File Loaded</h1>
       )}
     </main>
   );
