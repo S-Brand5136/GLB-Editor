@@ -6,6 +6,7 @@ const Button = (props) => {
     "btn--submit": props.submit,
     "btn--viewSelect": props.viewSelect,
     "btn--selected": props.selected,
+    "btn--option": props.option,
   });
 
   return (

@@ -1,3 +1,5 @@
+@import "../../styles/_variables.scss";
+
 button.btn {
   background-color: transparent;
   border: none;
@@ -33,5 +35,9 @@ button.btn {
 
   &:active {
     opacity: 0.8;
+  }
+
+  &--option {
+    color: $primary;
   }
 }
