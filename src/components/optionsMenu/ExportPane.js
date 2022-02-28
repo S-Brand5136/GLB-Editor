@@ -1,8 +1,14 @@
-import React from "react";
+import { useContext } from "react";
+import { meshContext } from "../../providers/MeshProvider";
+import EmptyScene from "./EmptyScene";
 import "./styles/ExportPane.scss";
 
 const ExportPane = () => {
-  return <div>ExportPane</div>;
+  const { mesh } = useContext(meshContext);
+
+  return (
+    <section className='export-pane'>{!mesh ? <EmptyScene /> : <></>}</section>
+  );
 };
 
 export default ExportPane;
