@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { optionsContext } from "../providers/OptionsProvider";
-import ExportPane from "./Menus/ExportPane";
-import ScenePane from "./Menus/ScenePane";
-import SettingsPane from "./Menus/SettingsPane";
+import ExportPane from "./Menus/ExportMenu";
+import ScenePane from "./Menus/SceneMenu";
+import SettingsPane from "./Menus/SettingsMenu";
 import OptionsSelector from "./Menus/OptionsSelector";
 import "./styles/SceneOptions.scss";
 

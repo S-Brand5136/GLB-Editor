@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { meshContext } from "../../providers/MeshProvider";
-import EmptyScene from "./EmptyScene";
-import "./styles/ScenePane.scss";
+import EmptyScene from "./components/EmptyScene";
+import "./styles/SceneMenu.scss";
 
 const ScenePane = () => {
   const [elementNames, setElementNames] = useState(null);
@@ -17,7 +17,7 @@ const ScenePane = () => {
   }, [graph]);
 
   return (
-    <section className='scene-pane'>{!mesh ? <EmptyScene /> : <></>}</section>
+    <section className='scene-menu'>{!mesh ? <EmptyScene /> : <></>}</section>
   );
 };
 
