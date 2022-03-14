@@ -2,11 +2,10 @@ import { useState, useContext, useEffect } from "react";
 import { meshContext } from "../providers/MeshProvider";
 import { SimpleDropzone } from "simple-dropzone";
 import { LoaderUtils } from "three";
-import Input from "./inputs/Input";
-
-import "./styles/MeshLoader.scss";
 import { loadAsset } from "../helpers/loadAsset";
 import { createGraph } from "../helpers/createGraph";
+import Input from "./Inputs/Input";
+import "./styles/MeshLoader.scss";
 
 const MeshLoader = () => {
   let inputEl, dropZone;
