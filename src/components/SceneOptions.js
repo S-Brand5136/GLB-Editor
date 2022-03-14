@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import { optionsContext } from "../providers/OptionsProvider";
-import ExportPane from "./optionsMenu/ExportPane";
-import ScenePane from "./optionsMenu/ScenePane";
-import SettingsPane from "./optionsMenu/SettingsPane";
-
+import ExportPane from "./Menus/ExportPane";
+import ScenePane from "./Menus/ScenePane";
+import SettingsPane from "./Menus/SettingsPane";
+import OptionsSelector from "./Menus/OptionsSelector";
 import "./styles/SceneOptions.scss";
-import OptionsSelector from "./optionsMenu/OptionsSelector";
 
 const SceneOptions = () => {
   const { selectedOption } = useContext(optionsContext);
