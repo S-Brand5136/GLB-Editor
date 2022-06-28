@@ -3,7 +3,7 @@ import { optionsContext } from "../providers/OptionsProvider";
 import ExportPane from "./Menus/ExportMenu";
 import ScenePane from "./Menus/SceneMenu";
 import SettingsPane from "./Menus/SettingsMenu";
-import OptionsSelector from "./Menus/OptionsSelector";
+import OptionsSelector from "./Menus/components/OptionsSelector";
 import "./styles/SceneOptions.scss";
 
 const SceneOptions = () => {
