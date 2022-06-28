@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { meshContext } from "../providers/MeshProvider";
 import { SimpleDropzone } from "simple-dropzone";
 import { LoaderUtils } from "three";
@@ -8,16 +8,16 @@ import Input from "./Inputs/Input";
 import "./styles/MeshLoader.scss";
 
 const MeshLoader = () => {
-  let inputEl, dropZone;
+  // let inputEl, dropZone;
   const [error, setError] = useState(null);
+  const inputEl = useRef(null);
+  const dropZoneEl = useRef(null);
 
   const { addMesh, addGraph } = useContext(meshContext);
 
   // Sets up drag and drop controller
   useEffect(() => {
-    dropZone = document.querySelector(".upload-form");
-    inputEl = document.querySelector("#asset");
-    const dropCtrl = new SimpleDropzone(dropZone, inputEl);
+    const dropCtrl = new SimpleDropzone(dropZoneEl.current, inputEl.current);
     dropCtrl.on("drop", ({ files }) => SubmitHandler(files));
     dropCtrl.on("dropstart", () => {});
     dropCtrl.on("droperror", () => {});
@@ -44,24 +44,28 @@ const MeshLoader = () => {
 
     loadAsset(baseURL, rootPath, fileMap, fileURL)
       .then((data) => {
-        addMesh(data.scene);
-        addGraph(createGraph(data.scene));
+        if (data?.scene) {
+          addMesh(data.scene);
+          return addGraph(createGraph(data.scene));
+        }
+
+        return setError("Failure during upload");
       })
       .catch((error) => {
-        console.log(error);
         setError(error);
       });
   };
 
   return (
     <div className='meshLoader'>
-      <div className='upload-form'>
-        <h3>Drag & Drop or Click to upload file</h3>
+      <div ref={dropZoneEl} className='upload-form'>
+        <h3>Drag & drop file, or click browse to upload file</h3>
         <Input
           onClick={() => {
             setError(null);
           }}
           type='file'
+          setRef={inputEl}
           id='asset'
           name='3D-Asset'
           asset
