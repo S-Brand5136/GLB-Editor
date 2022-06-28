@@ -8,6 +8,7 @@ const Input = (props) => {
 
   return (
     <input
+      ref={props.setRef}
       className={inputClass}
       type={props.type}
       name={props.name}
