@@ -2,7 +2,6 @@ import { useContext, useEffect, useRef } from "react";
 import useAssetLoader from "../hooks/useAssetLoader";
 import { meshContext } from "../providers/MeshProvider";
 import { SimpleDropzone } from "simple-dropzone";
-import { createGraph } from "../helpers/createGraph";
 import Input from "./Inputs/Input";
 import "./styles/MeshLoader.scss";
 
@@ -26,7 +25,6 @@ const MeshLoader = () => {
   useEffect(() => {
     if (asset) {
       addMesh(asset.scene);
-      addGraph(createGraph(asset.scene));
     }
   }, [asset, addMesh, addGraph]);
 
@@ -36,6 +34,7 @@ const MeshLoader = () => {
         <h3>Drag & drop file, or click browse to upload file</h3>
         <Input type='file' setRef={inputEl} id='asset' name='3D-Asset' asset />
         {error ? <p>{error}</p> : <p></p>}
+        {loading ? <p>Loading...</p> : <p></p>}
       </div>
     </div>
   );
