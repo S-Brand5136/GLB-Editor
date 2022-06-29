@@ -12,6 +12,7 @@
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.4.0",
     "react-scripts": "5.0.0",
     "sass": "^1.49.0",
     "simple-dropzone": "^0.8.1",
