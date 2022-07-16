@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import "./styles/BtnGroup.scss";
+import "./BtnGroup.scss";
 
 const BtnGroup = () => {
   let btnGroupClass = classNames("btnGroup", {});

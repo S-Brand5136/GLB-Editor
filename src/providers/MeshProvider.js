@@ -5,6 +5,7 @@ export default function MeshProvider(props) {
 
   const addMesh = (mesh) => {
     setMesh(mesh);
+    console.log(mesh);
   };
 
   const meshData = {

@@ -1,17 +1,14 @@
 import SceneOptions from "./components/SceneOptions";
-import Viewer from "./components/Viewer";
-import OptionsProvider from "./providers/OptionsProvider";
+import Viewer from "./components/Viewer/Viewer";
 
 import "./App.scss";
 
 const App = () => {
   return (
-    <div className='App'>
-      <OptionsProvider>
-        <SceneOptions></SceneOptions>
-      </OptionsProvider>
+    <main className='App'>
+      <SceneOptions></SceneOptions>
       <Viewer></Viewer>
-    </div>
+    </main>
   );
 };
 

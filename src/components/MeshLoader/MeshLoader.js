@@ -1,9 +1,9 @@
 import { useContext, useEffect, useRef } from "react";
-import useAssetLoader from "../hooks/useAssetLoader";
-import { meshContext } from "../providers/MeshProvider";
+import useAssetLoader from "../../hooks/use-asset-loader.hook";
+import { meshContext } from "../../providers/MeshProvider";
 import { SimpleDropzone } from "simple-dropzone";
-import Input from "./Inputs/Input";
-import "./styles/MeshLoader.scss";
+import Input from "../Input";
+import "./MeshLoader.scss";
 
 const MeshLoader = () => {
   // let inputEl, dropZone;
@@ -31,7 +31,7 @@ const MeshLoader = () => {
   return (
     <div className='meshLoader'>
       <div ref={dropZoneEl} className='upload-form'>
-        <h3>Drag & drop file, or click browse to upload file</h3>
+        <h3>Drag & drop file, or click browse to upload</h3>
         <Input type='file' setRef={inputEl} id='asset' name='3D-Asset' asset />
         {error ? <p>{error}</p> : <p></p>}
         {loading ? <p>Loading...</p> : <p></p>}

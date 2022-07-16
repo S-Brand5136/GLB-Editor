@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import Button from "../../Buttons/Button";
-import "./styles/OptionsSelector.scss";
+import Button from "../Button";
+import "./OptionsSelector.scss";
 
-import { optionsContext } from "../../../providers/OptionsProvider";
+import { optionsContext } from "../../providers/OptionsProvider";
 
 const OptionsSelector = (props) => {
   const { selectedOption, updateSelectedOption } = useContext(optionsContext);

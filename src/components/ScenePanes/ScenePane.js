@@ -1,7 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { meshContext } from "../../providers/MeshProvider";
-import EmptyScene from "./components/EmptyScene";
-import "./styles/SceneMenu.scss";
+import "./SceneMenu.scss";
 
 const ScenePane = () => {
   const [elementNames, setElementNames] = useState(null);
@@ -10,15 +9,10 @@ const ScenePane = () => {
   useEffect(() => {
     if (mesh) {
       console.log(graph);
-      //   mesh.traverse((child) => {
-      //     console.log(child);
-      //   });
     }
   }, [graph]);
 
-  return (
-    <section className='scene-menu'>{!mesh ? <EmptyScene /> : <></>}</section>
-  );
+  return <section className='scene-menu'></section>;
 };
 
 export default ScenePane;

@@ -1,11 +1,11 @@
 import { useEffect, useContext, useState } from "react";
 import classNames from "classnames";
 import { Canvas } from "@react-three/fiber";
-import { meshContext } from "../providers/MeshProvider";
+import { meshContext } from "../../providers/MeshProvider";
 import { OrbitControls } from "@react-three/drei";
-import MeshLoader from "./MeshLoader";
+import MeshLoader from "../MeshLoader";
 
-import "./styles/Viewer.scss";
+import "./Viewer.scss";
 
 const Viewer = () => {
   const [show, setShow] = useState(false);
@@ -16,6 +16,7 @@ const Viewer = () => {
   useEffect(() => {
     if (mesh) {
       setShow(true);
+      console.log(mesh);
     }
   }, [mesh]);
 

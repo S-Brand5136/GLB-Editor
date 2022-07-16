@@ -1,4 +1,4 @@
-import "./styles/Dropdown.scss";
+import "./Dropdown.scss";
 
 const Dropdown = ({ array, onChange }) => {
   const optionList = array.map((item) => <option value={item}>{item}</option>);

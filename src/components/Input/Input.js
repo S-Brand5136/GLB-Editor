@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import "./styles/Input.scss";
+import "./Input.scss";
 
 const Input = (props) => {
   let inputClass = classNames("input", {

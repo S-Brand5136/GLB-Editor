@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import "./styles/Button.scss";
+import "./Button.scss";
 
 const Button = (props) => {
   let buttonClass = classNames("btn", {

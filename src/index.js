@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import MeshProvider from "./providers/MeshProvider";
 import App from "./App";
 import "./index.scss";
+import Providers from "./providers/Providers.comp";
 
 ReactDOM.render(
   <React.StrictMode>
-    <MeshProvider>
+    <Providers>
       <App />
-    </MeshProvider>
+    </Providers>
   </React.StrictMode>,
   document.getElementById("root")
 );
