@@ -10,7 +10,7 @@
   - [] Add support for OBJ, MMD, MTLL
   - [] Add more descriptive error messages for loading failures
 ### Scene Pane
-  - [] Add menu to pick between each mesh loaded into scene
+  - [x] Add menu to pick between each mesh loaded into scene
   - [] Add drop down to change background color
   - [] Add drop down to change enviroment
   

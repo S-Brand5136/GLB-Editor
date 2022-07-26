@@ -1,2 +1,41 @@
+@use "../../scss/_variables.scss";
+@use "../../scss/_mixins.scss";
+
 section.scene-menu {
+  overflow: hidden;
+  padding: 2rem;
+
+  div.mesh-window {
+    background: variables.$secondary-highlight;
+    height: 10rem;
+    width: 17.5rem;
+    overflow: scroll;
+
+    div {
+      padding-left: 0.25rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.8em;
+
+      div.mesh-prefix {
+        @include mixins.mesh-window-prefix(green)
+      }
+
+      div.material-prefix {
+        @include mixins.mesh-window-prefix(blue)
+      }
+
+      div {
+        cursor: pointer;
+      }
+    }
+
+    div.selected {
+      background: variables.$secondary;
+    }
+  }
+
 }

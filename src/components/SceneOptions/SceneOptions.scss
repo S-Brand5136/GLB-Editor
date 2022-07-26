@@ -1,4 +1,4 @@
-@import "../../scss/_variables.scss";
+@use "../../scss/_variables.scss";
 
 nav.graph {
   height: 100vh;
@@ -6,8 +6,8 @@ nav.graph {
   position: absolute;
   right: 0;
   top: 0;
-  background-color: #111111;
-  color: $primary;
+  background-color: variables.$primary-dark;
+  color: variables.$primary;
 
   display: flex;
   justify-content: flex-start;
