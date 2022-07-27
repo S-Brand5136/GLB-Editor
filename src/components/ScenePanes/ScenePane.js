@@ -5,6 +5,7 @@ import "./SceneMenu.scss";
 const ScenePane = () => {
   const [meshChildren, setMeshChildren] = useState(null);
   const [selectedMesh, setSelectedMesh] = useState();
+  const [backgroundType, setBackgroundType] = useState("");
   const { mesh, graph } = useContext(meshContext);
 
   useEffect(() => {
@@ -47,6 +48,19 @@ const ScenePane = () => {
               </div>
             );
           })}
+      </div>
+      <div className='input-select'>
+        <span>Background</span>
+        <select
+          name=''
+          id=''
+          value={backgroundType}
+          onChange={(e) => setBackgroundType(e.target.value)}
+        >
+          <option value=''> </option>
+          <option value='color'>COLOR</option>
+          <option value='texture'>TEXTURE</option>
+        </select>
       </div>
     </section>
   );

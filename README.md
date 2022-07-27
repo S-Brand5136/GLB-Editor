@@ -11,7 +11,7 @@
   - [] Add more descriptive error messages for loading failures
 ### Scene Pane
   - [x] Add menu to pick between each mesh loaded into scene
-  - [] Add drop down to change background color
+  - [x] Add drop down to change background color
   - [] Add drop down to change enviroment
   
   - Mesh editor Menu

@@ -4,6 +4,9 @@
 section.scene-menu {
   overflow: hidden;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   div.mesh-window {
     background: variables.$secondary-highlight;
@@ -37,5 +40,27 @@ section.scene-menu {
       background: variables.$secondary;
     }
   }
+
+  div.input-select {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+
+    span {
+      font-size: 0.8em;
+    }
+
+    select {
+      width: 75%;
+      border: none;
+      background: variables.$secondary-highlight;
+      color: variables.$primary;
+      font-size: 0.9em;
+      padding-left: 0.25rem;
+      padding: 0.25rem;
+    }
+  }
+
 
 }
