@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef } from "react";
 import useAssetLoader from "../../hooks/use-asset-loader.hook";
-import { meshContext } from "../../providers/MeshProvider";
+import { threeContext } from "../../providers/ThreeProvider";
 import { SimpleDropzone } from "simple-dropzone";
 import Input from "../Input";
 import "./MeshLoader.scss";
@@ -10,7 +10,7 @@ const MeshLoader = () => {
   const inputEl = useRef(null);
   const dropZoneEl = useRef(null);
 
-  const { addMesh, addGraph } = useContext(meshContext);
+  const { addMesh, addGraph } = useContext(threeContext);
   const [loadAsset, asset, error, loading] = useAssetLoader(addMesh, addGraph);
 
   // Sets up drag and drop controller

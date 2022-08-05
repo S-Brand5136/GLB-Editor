@@ -46,13 +46,13 @@ section.scene-menu {
     gap: 1rem;
     justify-content: flex-start;
     align-items: center;
-
+    
     span {
       font-size: 0.8em;
     }
-
+    
     select {
-      width: 75%;
+      min-width: 8rem;
       border: none;
       background: variables.$secondary-highlight;
       color: variables.$primary;
@@ -60,7 +60,16 @@ section.scene-menu {
       padding-left: 0.25rem;
       padding: 0.25rem;
     }
+
+    label {
+      padding: 0.05rem;
+      width: 2.5rem;
+      height: 1.25rem;
+      border: #fff 1px solid;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
   }
-
-
 }

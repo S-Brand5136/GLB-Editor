@@ -1,12 +1,16 @@
 import { useContext, useState, useEffect } from "react";
-import { meshContext } from "../../providers/MeshProvider";
+import { threeContext } from "../../providers/ThreeProvider";
+import Input from "../Input/Input";
 import "./SceneMenu.scss";
 
 const ScenePane = () => {
   const [meshChildren, setMeshChildren] = useState(null);
   const [selectedMesh, setSelectedMesh] = useState();
+  const { mesh, changeBackground, background, resetBackground } =
+    useContext(threeContext);
+
+  // background input
   const [backgroundType, setBackgroundType] = useState("");
-  const { mesh, graph } = useContext(meshContext);
 
   useEffect(() => {
     if (mesh) {
@@ -55,12 +59,33 @@ const ScenePane = () => {
           name=''
           id=''
           value={backgroundType}
-          onChange={(e) => setBackgroundType(e.target.value)}
+          onChange={(e) => {
+            setBackgroundType(e.target.value);
+            if (e.target.value === "") {
+              resetBackground();
+            }
+          }}
         >
           <option value=''> </option>
           <option value='color'>COLOR</option>
-          <option value='texture'>TEXTURE</option>
+          <option value='file'>TEXTURE</option>
         </select>
+        <Input
+          backgroundInput
+          invisible={backgroundType === "" || backgroundType === "file"}
+          type={backgroundType}
+          onChange={(e) => {
+            changeBackground(e);
+          }}
+          id={"background-upload"}
+        />
+        <label
+          htmlFor='background-upload'
+          style={{
+            display: backgroundType === "file" ? "initial" : "none",
+            background: !background ? "black" : background,
+          }}
+        />
       </div>
     </section>
   );

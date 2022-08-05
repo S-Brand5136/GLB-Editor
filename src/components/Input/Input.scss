@@ -1,0 +1,13 @@
+input.input{
+
+  &--backgroundInput {
+    max-width: 2.5rem;
+    height: 1rem;
+    border: 0.05rem;
+    padding: 0.05rem 0.05rem 0.075rem 0.05rem;
+  }
+
+  &--invisible {
+    display: none;
+  }
+}

@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { meshContext } from "../../providers/MeshProvider";
+import { threeContext } from "../../providers/ThreeProvider";
 import "./ExportMenu.scss";
 
 const ExportPane = () => {
-  const { mesh } = useContext(meshContext);
+  const { mesh } = useContext(threeContext);
 
   return <section className='export-menu'></section>;
 };

@@ -4,6 +4,8 @@ import "./Input.scss";
 const Input = (props) => {
   let inputClass = classNames("input", {
     "input--asset": props.asset,
+    "input--backgroundInput": props.backgroundInput,
+    "input--invisible": props.invisible,
   });
 
   return (
