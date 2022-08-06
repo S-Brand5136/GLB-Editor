@@ -3,10 +3,17 @@
 
 section.scene-menu {
   overflow: hidden;
-  padding: 2rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  
+  section {
+    padding: 2rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
 
   div.mesh-window {
     background: variables.$secondary-highlight;

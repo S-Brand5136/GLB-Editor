@@ -1,9 +1,12 @@
 import { useContext, useState, useEffect } from "react";
+import { usePaneSelector } from "../../hooks/use-pane-selector.hook";
 import { threeContext } from "../../providers/ThreeProvider";
 import Input from "../Input/Input";
+import OptionsSelector from "../OptionsSelector";
 import "./SceneMenu.scss";
 
 const ScenePane = () => {
+  const { selectedOption, setSelectedOption } = usePaneSelector("OBJECT");
   const [meshChildren, setMeshChildren] = useState(null);
   const {
     mesh,
@@ -37,63 +40,72 @@ const ScenePane = () => {
 
   return (
     <section className='scene-menu'>
-      <div className='mesh-window'>
-        {meshChildren &&
-          meshChildren.map((child) => {
-            return (
-              <div
-                className={`${
-                  selectedMesh?.uuid === child.uuid ? "selected" : ""
-                }`}
-                key={child.uuid}
-                onClick={() => setSelectedMesh(child)}
-              >
-                <div>
-                  <div className='mesh-prefix'></div>
-                  <p>{child.name === "" ? "Scene" : child.name}</p>
+      <section className='top-layout'>
+        <div className='mesh-window'>
+          {meshChildren &&
+            meshChildren.map((child) => {
+              return (
+                <div
+                  className={`${
+                    selectedMesh?.uuid === child.uuid ? "selected" : ""
+                  }`}
+                  key={child.uuid}
+                  onClick={() => setSelectedMesh(child)}
+                >
+                  <div>
+                    <div className='mesh-prefix'></div>
+                    <p>{child.name === "" ? "Scene" : child.name}</p>
+                  </div>
+                  <div>
+                    <div className='material-prefix'></div>
+                    <p>{child.material && child.material.name}</p>
+                  </div>
                 </div>
-                <div>
-                  <div className='material-prefix'></div>
-                  <p>{child.material && child.material.name}</p>
-                </div>
-              </div>
-            );
-          })}
-      </div>
-      <div className='input-select'>
-        <span>Background</span>
-        <select
-          name=''
-          id=''
-          value={backgroundType}
-          onChange={(e) => {
-            setBackgroundType(e.target.value);
-            if (e.target.value === "") {
-              resetBackground();
-            }
-          }}
-        >
-          <option value=''> </option>
-          <option value='color'>COLOR</option>
-          <option value='file'>TEXTURE</option>
-        </select>
-        <Input
-          backgroundInput
-          invisible={backgroundType === "" || backgroundType === "file"}
-          type={backgroundType}
-          onChange={(e) => {
-            changeBackground(e);
-          }}
-          id={"background-upload"}
+              );
+            })}
+        </div>
+        <div className='input-select'>
+          <span>Background</span>
+          <select
+            name=''
+            id=''
+            value={backgroundType}
+            onChange={(e) => {
+              setBackgroundType(e.target.value);
+              if (e.target.value === "") {
+                resetBackground();
+              }
+            }}
+          >
+            <option value=''> </option>
+            <option value='color'>COLOR</option>
+            <option value='file'>TEXTURE</option>
+          </select>
+          <Input
+            backgroundInput
+            invisible={backgroundType === "" || backgroundType === "file"}
+            type={backgroundType}
+            onChange={(e) => {
+              changeBackground(e);
+            }}
+            id={"background-upload"}
+          />
+          <label
+            htmlFor='background-upload'
+            style={{
+              display: backgroundType === "file" ? "initial" : "none",
+              background: !background ? "black" : background,
+            }}
+          />
+        </div>
+      </section>
+      <nav className='scene-options' style={{ width: "100%" }}>
+        <OptionsSelector
+          options={["OBJECT", "GEOMETRY", "MATERIAL"]}
+          selectedOption={selectedOption}
+          setSelectedOption={(option) => setSelectedOption(option)}
         />
-        <label
-          htmlFor='background-upload'
-          style={{
-            display: backgroundType === "file" ? "initial" : "none",
-            background: !background ? "black" : background,
-          }}
-        />
-      </div>
+      </nav>
     </section>
   );
 };
