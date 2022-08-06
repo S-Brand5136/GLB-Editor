@@ -2,6 +2,10 @@
 
 - Drag and drop Glb files to view mesh in react three fiber
 
+## Demo 
+
+- Demo hosted on [Vercel here](https://glb-edior.vercel.app/)
+
 ## Todo List
 - A list of all the features to be added
 
@@ -12,7 +16,6 @@
 ### Scene Pane
   - [x] Add menu to pick between each mesh loaded into scene
   - [x] Add drop down to change background color
-  - [] Add drop down to change enviroment
   
   - Mesh editor Menu
     - Object Menu
