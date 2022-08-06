@@ -8,7 +8,7 @@ const SceneOptions = () => {
   const { selectedOption } = useContext(optionsContext);
 
   return (
-    <nav className='graph'>
+    <nav className='scene-options'>
       <OptionsSelector options={["SCENE", "EXPORT", "SETTINGS"]} />
       {selectedOption === "SCENE" && <ScenePane></ScenePane>}
       {selectedOption === "EXPORT" && <ExportPane></ExportPane>}
