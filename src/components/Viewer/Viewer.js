@@ -38,6 +38,7 @@ const Viewer = () => {
     showGrid,
     selectedMesh,
     setSelectedMesh,
+    controlType,
   } = useContext(threeContext);
 
   useEffect(() => {
@@ -57,7 +58,7 @@ const Viewer = () => {
             <TransformControls
               onMouseUp={() => setOrbitOn(true)}
               onMouseDown={() => setOrbitOn(false)}
-              mode='translate'
+              mode={controlType}
               object={selectedMesh}
             />
           )}

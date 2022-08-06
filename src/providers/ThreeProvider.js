@@ -5,6 +5,7 @@ export default function ThreeProvider(props) {
   const [mesh, setMesh] = useState(null);
   const [showGrid, setShowGrid] = useState(false);
   const [selectedMesh, setSelectedMesh] = useState();
+  const [controlType, setControlType] = useState("translate");
   const { tools } = useBackground();
 
   const addMesh = (mesh) => {
@@ -18,6 +19,8 @@ export default function ThreeProvider(props) {
     setShowGrid,
     selectedMesh,
     setSelectedMesh,
+    controlType,
+    setControlType,
     ...tools,
   };
 

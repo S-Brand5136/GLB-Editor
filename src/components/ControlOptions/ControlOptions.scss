@@ -1,0 +1,23 @@
+@use "../../scss/_variables.scss";
+
+aside {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  button {
+    border: none;
+    background: variables.$secondary-highlight;
+    font-size: 1.25em;
+    padding: 0.25rem;
+    color: variables.$primary;
+  }
+  
+  button.selected {
+    background-color: #0088ff !important;
+    color: #80c3ff;
+    border: none;
+  }
+}
