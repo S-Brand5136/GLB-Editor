@@ -3,6 +3,8 @@ import { useBackground } from "../hooks/use-background.hook";
 
 export default function ThreeProvider(props) {
   const [mesh, setMesh] = useState(null);
+  const [showGrid, setShowGrid] = useState(false);
+  const [selectedMesh, setSelectedMesh] = useState();
   const { tools } = useBackground();
 
   const addMesh = (mesh) => {
@@ -12,6 +14,10 @@ export default function ThreeProvider(props) {
   const threeData = {
     mesh,
     addMesh,
+    showGrid,
+    setShowGrid,
+    selectedMesh,
+    setSelectedMesh,
     ...tools,
   };
 

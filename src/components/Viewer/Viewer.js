@@ -2,35 +2,74 @@ import { useEffect, useContext, useState } from "react";
 import classNames from "classnames";
 import { Canvas } from "@react-three/fiber";
 import { threeContext } from "../../providers/ThreeProvider";
-import { Environment, OrbitControls } from "@react-three/drei";
+import {
+  Environment,
+  OrbitControls,
+  Plane,
+  Select,
+  TransformControls,
+  useHelper,
+} from "@react-three/drei";
 import MeshLoader from "../MeshLoader";
 
 import "./Viewer.scss";
+import { BoxHelper } from "three";
+
+const UserObject = ({ mesh, transformMesh }) => {
+  useHelper(
+    transformMesh !== null && { current: transformMesh },
+    BoxHelper,
+    "yellow"
+  );
+
+  return <primitive object={mesh} />;
+};
 
 const Viewer = () => {
-  const [show, setShow] = useState(false);
   let viewerClass = classNames("viewer", {});
 
-  const { mesh, background, isTexture } = useContext(threeContext);
+  const [renderScene, setRenderScene] = useState(false);
+  const [orbitOn, setOrbitOn] = useState(true);
+
+  const {
+    mesh,
+    background,
+    isTexture,
+    showGrid,
+    selectedMesh,
+    setSelectedMesh,
+  } = useContext(threeContext);
 
   useEffect(() => {
     if (mesh) {
-      setShow(true);
+      setRenderScene(true);
     }
   }, [mesh]);
 
   return (
     <main className={viewerClass}>
-      {!show ? (
+      {!renderScene ? (
         <MeshLoader />
       ) : (
         <Canvas>
+          {/* Controls */}
+          {selectedMesh && (
+            <TransformControls
+              onMouseUp={() => setOrbitOn(true)}
+              onMouseDown={() => setOrbitOn(false)}
+              mode='translate'
+              object={selectedMesh}
+            />
+          )}
+          {orbitOn && <OrbitControls />}
+
+          {/* Lights */}
+          <ambientLight intensity={1} />
+          <directionalLight color='white' position={[-2, -3, 5]} />
+          {/* Backgrounds */}
           {background && !isTexture && (
             <color attach='background' args={[background]} />
           )}
-          <OrbitControls />
-          <ambientLight intensity={1} />
-          <directionalLight color='white' position={[-2, -3, 5]} />
           {isTexture && (
             <Environment
               background
@@ -42,7 +81,22 @@ const Viewer = () => {
               files={background}
             />
           )}
-          <primitive object={mesh} />
+          {/* Mesh */}
+          <Select
+            box
+            multiple
+            onChange={(e) => {
+              e.length > 0 ? setSelectedMesh(e[0]) : setSelectedMesh(null);
+            }}
+          >
+            <UserObject mesh={mesh} transformMesh={selectedMesh} />
+          </Select>
+          {/* Grid */}
+          {showGrid && (
+            <Plane rotation-x={Math.PI / 2} args={[20, 20, 10, 10]}>
+              <meshPhongMaterial wireframe />
+            </Plane>
+          )}
         </Canvas>
       )}
     </main>

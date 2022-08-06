@@ -5,9 +5,14 @@ import "./SceneMenu.scss";
 
 const ScenePane = () => {
   const [meshChildren, setMeshChildren] = useState(null);
-  const [selectedMesh, setSelectedMesh] = useState();
-  const { mesh, changeBackground, background, resetBackground } =
-    useContext(threeContext);
+  const {
+    mesh,
+    changeBackground,
+    background,
+    resetBackground,
+    selectedMesh,
+    setSelectedMesh,
+  } = useContext(threeContext);
 
   // background input
   const [backgroundType, setBackgroundType] = useState("");
@@ -37,7 +42,9 @@ const ScenePane = () => {
           meshChildren.map((child) => {
             return (
               <div
-                className={`${selectedMesh.uuid === child.uuid && "selected"}`}
+                className={`${
+                  selectedMesh?.uuid === child.uuid ? "selected" : ""
+                }`}
                 key={child.uuid}
                 onClick={() => setSelectedMesh(child)}
               >
