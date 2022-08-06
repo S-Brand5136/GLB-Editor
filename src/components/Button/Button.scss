@@ -1,4 +1,5 @@
-@import "../../scss/_variables.scss";
+@use "../../scss/_variables.scss";
+@use "../../scss/_mixins.scss";
 
 button.btn {
   background-color: transparent;
@@ -6,8 +7,8 @@ button.btn {
   cursor: pointer;
 
   &--submit {
-    background: #2770a1;
-    color: #fff;
+    background: variables.$blue-dark;
+    color: variables.$light;
     border-radius: 1rem;
     padding: 0.8rem 1.5rem 0.8rem 1.5rem;
     text-transform: uppercase;
@@ -16,8 +17,8 @@ button.btn {
   }
 
   &--viewSelect {
-    border: 3px solid #38a1e7;
-    background-color: #fff;
+    border: 3px solid variables.$blue-light;;
+    background-color: variables.$light;
 
     img {
       height: 3rem;
@@ -26,25 +27,19 @@ button.btn {
   }
 
   &--selected {
-    border: 3px solid #2770a1;
-    background-color: rgb(48, 48, 48);
+    border: 3px solid variables.$blue-dark;;
+    background-color: variables.$secondary;
   }
 
-  &:hover {
-    opacity: 0.5;
-  }
-
-  &:active {
-    opacity: 0.8;
-  }
+  @include mixins.clickable-element();
 
   &--option {
-    color: $primary;
-    background-color: rgba($color: rgb(51, 51, 51), $alpha: 0.65);
+    color: variables.$primary;
+    background-color: rgba($color: variables.$secondary, $alpha: 0.65);
     padding: 0.5rem;
   }
 
   &--option-selected {
-    background-color: #111;
+    background-color: variables.$primary-dark;
   }
 }

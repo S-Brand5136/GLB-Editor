@@ -14,7 +14,9 @@ section.scene-menu {
     width: 17.5rem;
     overflow: scroll;
 
+    
     div {
+      @include mixins.clickable-element();
       padding-left: 0.25rem;
       display: flex;
       flex-direction: row;

@@ -1,4 +1,5 @@
 @use "../../scss/_variables.scss";
+@use "../../scss/_mixins.scss";
 
 aside {
   position: absolute;
@@ -13,6 +14,8 @@ aside {
     font-size: 1.25em;
     padding: 0.25rem;
     color: variables.$primary;
+
+    @include mixins.clickable-element();
   }
   
   button.selected {
