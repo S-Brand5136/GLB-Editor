@@ -7,8 +7,8 @@ import "./App.scss";
 const App = () => {
   return (
     <main className='App'>
-      <SceneOptions></SceneOptions>
       <Viewer></Viewer>
+      <SceneOptions></SceneOptions>
       <ControlOptions></ControlOptions>
     </main>
   );

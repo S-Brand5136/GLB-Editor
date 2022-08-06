@@ -4,6 +4,8 @@ import { Canvas } from "@react-three/fiber";
 import { threeContext } from "../../providers/ThreeProvider";
 import {
   Environment,
+  GizmoHelper,
+  GizmoViewport,
   OrbitControls,
   Plane,
   Select,
@@ -98,6 +100,13 @@ const Viewer = () => {
               <meshPhongMaterial wireframe />
             </Plane>
           )}
+          {/* Gizmo */}
+          <GizmoHelper alignment='bottom-right' margin={[80, 80]}>
+            <GizmoViewport
+              axisColors={["red", "green", "blue"]}
+              labelColor='black'
+            />
+          </GizmoHelper>
         </Canvas>
       )}
     </main>

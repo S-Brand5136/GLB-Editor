@@ -3,15 +3,10 @@
 nav.graph {
   height: 100vh;
   width: 18vw;
-  position: absolute;
-  right: 0;
-  top: 0;
   background-color: variables.$primary-dark;
   color: variables.$primary;
-
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  z-index: 2;
 }
