@@ -3,6 +3,7 @@ import classNames from "classnames";
 import { Canvas } from "@react-three/fiber";
 import { threeContext } from "../../providers/ThreeProvider";
 import {
+  Center,
   Environment,
   GizmoHelper,
   GizmoViewport,
@@ -68,10 +69,10 @@ const Viewer = () => {
 
           {/* Lights */}
           <ambientLight intensity={1} />
-          <directionalLight color='white' position={[-2, -3, 5]} />
+          <directionalLight color="white" position={[-2, -3, 5]} />
           {/* Backgrounds */}
           {background && !isTexture && (
-            <color attach='background' args={[background]} />
+            <color attach="background" args={[background]} />
           )}
           {isTexture && (
             <Environment
@@ -84,16 +85,18 @@ const Viewer = () => {
               files={background}
             />
           )}
-          {/* Mesh */}
-          <Select
-            box
-            multiple
-            onChange={(e) => {
-              e.length > 0 ? setSelectedMesh(e[0]) : setSelectedMesh(null);
-            }}
-          >
-            <UserObject mesh={mesh} transformMesh={selectedMesh} />
-          </Select>
+          <Center>
+            {/* Mesh */}
+            <Select
+              box
+              multiple
+              onChange={(e) => {
+                e.length > 0 ? setSelectedMesh(e[0]) : setSelectedMesh(null);
+              }}
+            >
+              <UserObject mesh={mesh} transformMesh={selectedMesh} />
+            </Select>
+          </Center>
           {/* Grid */}
           {showGrid && (
             <Plane rotation-x={Math.PI / 2} args={[20, 20, 10, 10]}>
@@ -101,10 +104,10 @@ const Viewer = () => {
             </Plane>
           )}
           {/* Gizmo */}
-          <GizmoHelper alignment='bottom-right' margin={[80, 80]}>
+          <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
             <GizmoViewport
               axisColors={["red", "green", "blue"]}
-              labelColor='black'
+              labelColor="black"
             />
           </GizmoHelper>
         </Canvas>
