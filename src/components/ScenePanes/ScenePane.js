@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { usePaneSelector } from "../../hooks/use-pane-selector.hook";
 import { threeContext } from "../../providers/ThreeProvider";
+import { GeometryWindow, MaterialWindow, ObjectWindow } from "../EditorMenus/";
 import Input from "../Input/Input";
 import OptionsSelector from "../OptionsSelector";
 import "./SceneMenu.scss";
@@ -36,12 +37,13 @@ const ScenePane = () => {
 
       setMeshChildren(meshArr);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mesh]);
 
   return (
-    <section className='scene-menu'>
-      <section className='top-layout'>
-        <div className='mesh-window'>
+    <section className="scene-menu">
+      <section className="top-layout">
+        <div className="mesh-window">
           {meshChildren &&
             meshChildren.map((child) => {
               return (
@@ -53,22 +55,22 @@ const ScenePane = () => {
                   onClick={() => setSelectedMesh(child)}
                 >
                   <div>
-                    <div className='mesh-prefix'></div>
+                    <div className="mesh-prefix"></div>
                     <p>{child.name === "" ? "Scene" : child.name}</p>
                   </div>
                   <div>
-                    <div className='material-prefix'></div>
+                    <div className="material-prefix"></div>
                     <p>{child.material && child.material.name}</p>
                   </div>
                 </div>
               );
             })}
         </div>
-        <div className='input-select'>
+        <div className="input-select">
           <span>Background</span>
           <select
-            name=''
-            id=''
+            name=""
+            id=""
             value={backgroundType}
             onChange={(e) => {
               setBackgroundType(e.target.value);
@@ -77,9 +79,9 @@ const ScenePane = () => {
               }
             }}
           >
-            <option value=''> </option>
-            <option value='color'>COLOR</option>
-            <option value='file'>TEXTURE</option>
+            <option value=""> </option>
+            <option value="color">COLOR</option>
+            <option value="file">TEXTURE</option>
           </select>
           <Input
             backgroundInput
@@ -91,7 +93,7 @@ const ScenePane = () => {
             id={"background-upload"}
           />
           <label
-            htmlFor='background-upload'
+            htmlFor="background-upload"
             style={{
               display: backgroundType === "file" ? "initial" : "none",
               background: !background ? "black" : background,
@@ -99,12 +101,15 @@ const ScenePane = () => {
           />
         </div>
       </section>
-      <nav className='scene-options' style={{ width: "100%" }}>
+      <nav className="scene-options" style={{ width: "100%" }}>
         <OptionsSelector
           options={["OBJECT", "GEOMETRY", "MATERIAL"]}
           selectedOption={selectedOption}
           setSelectedOption={(option) => setSelectedOption(option)}
         />
+        {selectedOption === "OBJECT" && <ObjectWindow />}
+        {selectedOption === "GEOMETRY" && <GeometryWindow />}
+        {selectedOption === "MATERIAL" && <MaterialWindow />}
       </nav>
     </section>
   );
