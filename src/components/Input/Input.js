@@ -6,6 +6,9 @@ const Input = (props) => {
     "input--asset": props.asset,
     "input--backgroundInput": props.backgroundInput,
     "input--invisible": props.invisible,
+    "input--object": props.object,
+    "input--dark": props.darkBackground,
+    "input--removeSpin": props.removeSpin,
   });
 
   return (
@@ -17,6 +20,11 @@ const Input = (props) => {
       id={props.id}
       onChange={props.onChange}
       onClick={props.onClick}
+      value={props.value}
+      defaultValue={props.value}
+      step={props.step}
+      disabled={props.disabled}
+      onMouseDown={props.onMouseDown}
     />
   );
 };

@@ -1,4 +1,10 @@
+@use "../../scss/_variables.scss";
+
 input.input{
+
+  &:focus-visible {
+    outline: none;
+  }
 
   &--backgroundInput {
     max-width: 2.5rem;
@@ -9,5 +15,51 @@ input.input{
 
   &--invisible {
     display: none;
+  }
+
+  &--object {
+    border: none;
+    background-color: transparent;
+    color: variables.$blue-input;
+    overflow: hidden;
+    width: 3rem;
+    text-align: left;
+    font-size: 0.95em;
+    cursor: ew-resize;
+  
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+  }
+
+  &--dark {
+    padding: 0.125rem 0.125rem 0.125rem 0.125rem;
+    margin: 0;
+    background: variables.$secondary-highlight;
+    border: none;
+    color: variables.$primary;
+    width: 9.25rem;
+    font-size: 0.95em;
+  }
+
+  &--removeSpin {
+    &::-webkit-inner-spin-button, 
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+      display: none;
+    }
+
+      &[type=number] {
+        -moz-appearance:textfield; /* Firefox */
+    }
   }
 }

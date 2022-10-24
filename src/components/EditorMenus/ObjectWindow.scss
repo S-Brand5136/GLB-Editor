@@ -1,0 +1,45 @@
+@use "../../scss/_variables.scss";
+@use "../../scss/_mixins.scss";
+
+div.object-window {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+
+    div.row {
+        margin: 0.5rem 0 0.5rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        padding-right: 1rem;
+        
+        h4 {
+            font-weight: 300;
+            display: inline-block;
+            margin: 0;
+            flex: 1;
+        }
+        
+        
+        div {
+            display: inline-flex;
+            flex: 1;
+
+            span {
+                margin: 0 0.5rem 0 0.5rem;
+            }
+        }
+
+        textarea {
+            background: variables.$secondary-highlight;
+            border: none;
+            color: variables.$primary;
+
+            &:focus-visible {
+                outline: none;
+            }
+        }
+    }
+}
