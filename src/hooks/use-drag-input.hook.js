@@ -1,8 +1,9 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 export function useDragInput(value, setValue) {
   const [snapshot, setSnapshot] = useState(value);
   const [startVal, setStartVal] = useState(0);
+  const oldX = useRef({ num: 0 });
 
   // Start the drag to change operation when the mouse button is down.
   const onStart = useCallback(
@@ -17,11 +18,13 @@ export function useDragInput(value, setValue) {
     // Only change the value if the drag was actually started.
     const onUpdate = (event) => {
       if (startVal) {
-        if (event.layerX < 0) {
-          return setValue(value - 0.01);
+        if (event.clientX < oldX.num) {
+          setValue(Number(value - 0.01));
+        } else {
+          setValue(Number(value + 0.01));
         }
 
-        setValue(value + 0.01);
+        oldX.num = event.clientX;
       }
     };
 
@@ -36,7 +39,7 @@ export function useDragInput(value, setValue) {
       document.removeEventListener("mousemove", onUpdate);
       document.removeEventListener("mouseup", onEnd);
     };
-  }, [startVal, setValue, snapshot, value]);
+  }, [startVal, setValue, snapshot]);
 
   return onStart;
 }

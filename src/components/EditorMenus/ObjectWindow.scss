@@ -6,6 +6,7 @@ div.object-window {
     flex-direction: column;
     width: 100%;
     padding: 1rem;
+    user-select: none;
 
     div.row {
         margin: 0.5rem 0 0.5rem 0;

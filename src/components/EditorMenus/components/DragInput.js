@@ -1,19 +1,20 @@
 import { useDragInput } from "../../../hooks/use-drag-input.hook";
 import Input from "../../Input/Input";
 
-const DragInput = ({ value, onChange, onMouseDown }) => {
+const DragInput = ({ value = 1, onChange, onMouseDown }) => {
   const setValue = useDragInput(value, onMouseDown);
-
   return (
     <Input
       object
       removeSpin
-      type={"number"}
+      type={"text"}
+      inputmode='numeric'
+      pattern='[0-9]*'
       step={0.01}
-      value={value.toFixed(3)}
+      value={Number(value)}
       onMouseDown={setValue}
       onChange={(e) => {
-        onChange(e.target.value);
+        onChange(Number(e.target.value));
       }}
     />
   );

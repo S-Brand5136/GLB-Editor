@@ -69,10 +69,10 @@ const Viewer = () => {
 
           {/* Lights */}
           <ambientLight intensity={1} />
-          <directionalLight color="white" position={[-2, -3, 5]} />
+          <directionalLight color='white' position={[-2, -3, 5]} />
           {/* Backgrounds */}
           {background && !isTexture && (
-            <color attach="background" args={[background]} />
+            <color attach='background' args={[background]} />
           )}
           {isTexture && (
             <Environment
@@ -104,10 +104,10 @@ const Viewer = () => {
             </Plane>
           )}
           {/* Gizmo */}
-          <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
+          <GizmoHelper alignment='bottom-right' margin={[80, 80]}>
             <GizmoViewport
               axisColors={["red", "green", "blue"]}
-              labelColor="black"
+              labelColor='black'
             />
           </GizmoHelper>
         </Canvas>
