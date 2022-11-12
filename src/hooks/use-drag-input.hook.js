@@ -1,8 +1,9 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 
 export function useDragInput(value, setValue) {
   const [snapshot, setSnapshot] = useState(value);
   const [startVal, setStartVal] = useState(0);
+  const oldX = useRef({ num: 0 });
 
   // Start the drag to change operation when the mouse button is down.
   const onStart = useCallback(
@@ -38,7 +39,7 @@ export function useDragInput(value, setValue) {
       document.removeEventListener("mousemove", onUpdate);
       document.removeEventListener("mouseup", onEnd);
     };
-  }, [startVal, setValue, snapshot, value]);
+  }, [startVal, setValue, snapshot]);
 
   return onStart;
 }

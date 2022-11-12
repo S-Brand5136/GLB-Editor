@@ -25,6 +25,9 @@ const Input = (props) => {
       step={props.step}
       disabled={props.disabled}
       onMouseDown={props.onMouseDown}
+      inputMode={props.inputMode}
+      patter={props.pattern}
+      checked={props.isChecked}
     />
   );
 };
