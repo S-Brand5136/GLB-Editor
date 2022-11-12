@@ -17,10 +17,12 @@ export function useDragInput(value, setValue) {
     // Only change the value if the drag was actually started.
     const onUpdate = (event) => {
       if (startVal) {
-        if (event.layerX < 0) {
+        if (event.pageX < startVal) {
+          setStartVal(event.pageX);
           return setValue(value - 0.01);
         }
 
+        setStartVal(event.pageX);
         setValue(value + 0.01);
       }
     };

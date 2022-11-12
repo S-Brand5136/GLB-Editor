@@ -6,8 +6,6 @@ const TranslationGroup = ({ type, translation, onChange, onMouseDown }) => {
   const [yValue, setYValue] = useState(translation.y);
   const [zValue, setZValue] = useState(translation.z);
 
-  console.log(translation);
-
   if (!translation) {
     return;
   }

@@ -16,18 +16,19 @@ const ScenePane = () => {
     resetBackground,
     selectedMesh,
     setSelectedMesh,
+    renderScene,
   } = useContext(threeContext);
 
   // background input
   const [backgroundType, setBackgroundType] = useState("");
 
   useEffect(() => {
-    if (mesh) {
+    if (mesh.current && !selectedMesh) {
       const meshArr = [];
 
-      setSelectedMesh(mesh.children[0]);
+      setSelectedMesh(mesh.current.children[0]);
 
-      mesh.traverse((child) => {
+      mesh.current.traverse((child) => {
         if (child.parent === null) {
           child.userData["mesh_parent"] = true;
         }
@@ -38,7 +39,7 @@ const ScenePane = () => {
       setMeshChildren(meshArr);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mesh]);
+  }, [renderScene]);
 
   return (
     <section className="scene-menu">

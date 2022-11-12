@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import classNames from "classnames";
 import { Canvas } from "@react-three/fiber";
 import { threeContext } from "../../providers/ThreeProvider";
@@ -25,14 +25,13 @@ const UserObject = ({ mesh, transformMesh }) => {
     "yellow"
   );
 
-  return <primitive object={mesh} />;
+  return <primitive object={mesh.current} />;
 };
 
 const Viewer = () => {
   let viewerClass = classNames("viewer", {});
 
-  const [renderScene, setRenderScene] = useState(false);
-  const [orbitOn, setOrbitOn] = useState(true);
+  const [orbitControlsEnabled, setOrbitControlsEnabled] = useState(true);
 
   const {
     mesh,
@@ -42,13 +41,8 @@ const Viewer = () => {
     selectedMesh,
     setSelectedMesh,
     controlType,
+    renderScene,
   } = useContext(threeContext);
-
-  useEffect(() => {
-    if (mesh) {
-      setRenderScene(true);
-    }
-  }, [mesh]);
 
   return (
     <main className={viewerClass}>
@@ -59,13 +53,13 @@ const Viewer = () => {
           {/* Controls */}
           {selectedMesh && (
             <TransformControls
-              onMouseUp={() => setOrbitOn(true)}
-              onMouseDown={() => setOrbitOn(false)}
+              onMouseUp={() => setOrbitControlsEnabled(true)}
+              onMouseDown={() => setOrbitControlsEnabled(false)}
               mode={controlType}
               object={selectedMesh}
             />
           )}
-          {orbitOn && <OrbitControls />}
+          {orbitControlsEnabled && <OrbitControls />}
 
           {/* Lights */}
           <ambientLight intensity={1} />
@@ -90,8 +84,10 @@ const Viewer = () => {
             <Select
               box
               multiple
-              onChange={(e) => {
-                e.length > 0 ? setSelectedMesh(e[0]) : setSelectedMesh(null);
+              onChange={(selectedArr) => {
+                selectedArr.length > 0
+                  ? setSelectedMesh(selectedArr[0])
+                  : setSelectedMesh(null);
               }}
             >
               <UserObject mesh={mesh} transformMesh={selectedMesh} />
@@ -99,7 +95,11 @@ const Viewer = () => {
           </Center>
           {/* Grid */}
           {showGrid && (
-            <Plane rotation-x={Math.PI / 2} args={[20, 20, 10, 10]}>
+            <Plane
+              rotation-x={Math.PI / 2}
+              position-y={-0.15}
+              args={[20, 20, 10, 10]}
+            >
               <meshPhongMaterial wireframe />
             </Plane>
           )}

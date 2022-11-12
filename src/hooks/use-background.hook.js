@@ -5,7 +5,7 @@ export function useBackground() {
   const [isTexture, setIsTexture] = useState(false);
   const reader = new FileReader();
 
-  const tools = {
+  const backgroundTools = {
     changeBackground: (input) => {
       if (input.target.value.charAt(0) === "#") {
         setIsTexture(false);
@@ -33,5 +33,5 @@ export function useBackground() {
     isTexture,
   };
 
-  return { tools };
+  return { backgroundTools };
 }

@@ -1,15 +1,18 @@
+import { useRef } from "react";
 import { createContext, useState } from "react";
 import { useBackground } from "../hooks/use-background.hook";
 
 export default function ThreeProvider(props) {
-  const [mesh, setMesh] = useState(null);
+  const mesh = useRef(null);
   const [showGrid, setShowGrid] = useState(false);
   const [selectedMesh, setSelectedMesh] = useState();
+  const [renderScene, setRenderScene] = useState(false);
   const [controlType, setControlType] = useState("translate");
-  const { tools } = useBackground();
+  const { backgroundTools } = useBackground();
 
-  const addMesh = (mesh) => {
-    setMesh(mesh);
+  const addMesh = (loadedGlb) => {
+    mesh.current = loadedGlb;
+    setRenderScene(true);
   };
 
   const threeData = {
@@ -21,7 +24,9 @@ export default function ThreeProvider(props) {
     setSelectedMesh,
     controlType,
     setControlType,
-    ...tools,
+    renderScene,
+    setRenderScene,
+    ...backgroundTools,
   };
 
   return (
