@@ -1,5 +1,9 @@
 @use "../../scss/_variables.scss";
 
+input[type=checkbox] {
+  cursor: pointer;
+}
+
 input.input{
 
   &:focus-visible {
@@ -17,7 +21,7 @@ input.input{
     display: none;
   }
 
-  &--object {
+  &--dragInput {
     border: none;
     background-color: transparent;
     color: variables.$blue-input;

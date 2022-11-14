@@ -1,13 +1,12 @@
-import { useContext } from "react";
-import { threeContext } from "../../providers/ThreeProvider";
 import Row from "./components/Row";
 import Input from "../Input/Input";
 import "./ObjectWindow.scss";
 import TranslationGroup from "./components/TranslationGroup";
 import { useObjectStates } from "../../hooks/use-object-states.hook";
+import { useThreeStore } from "../../hooks/use-three-store.hook";
 
 const ObjectWindow = () => {
-  const { selectedMesh } = useContext(threeContext);
+  const { selectedMesh } = useThreeStore();
   const { tools } = useObjectStates(selectedMesh);
 
   if (!selectedMesh) {
@@ -31,7 +30,7 @@ const ObjectWindow = () => {
   };
 
   return (
-    <div className='object-window'>
+    <div className="object-window">
       <Row title={"Type"} body={<h4>{selectedMesh.type}</h4>} />
       <Row
         title={"UUID"}
@@ -76,13 +75,13 @@ const ObjectWindow = () => {
         body={
           <div>
             <Input
-              type='checkbox'
+              type="checkbox"
               onChange={(e) => updateVariable("castShadow", e.target.checked)}
               isChecked={selectedMesh.castShadow}
             />
             <span>Cast</span>
             <Input
-              type='checkbox'
+              type="checkbox"
               onChange={(e) =>
                 updateVariable("receiveShadow", e.target.checked)
               }
@@ -97,7 +96,7 @@ const ObjectWindow = () => {
         body={
           <div>
             <Input
-              type='checkbox'
+              type="checkbox"
               onChange={(e) => {
                 updateVariable("visible", e.target.checked);
               }}
@@ -111,7 +110,7 @@ const ObjectWindow = () => {
         body={
           <div>
             <Input
-              type='checkbox'
+              type="checkbox"
               onChange={(e) =>
                 updateVariable("frustumCulled", e.target.checked)
               }
@@ -126,7 +125,7 @@ const ObjectWindow = () => {
           <Input
             darkBackground
             removeSpin
-            type='text'
+            type="text"
             onChange={(e) => {
               const num = Number(e.target.value);
               tools.setRenderOrder(num);

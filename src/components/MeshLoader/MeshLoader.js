@@ -1,17 +1,17 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import useAssetLoader from "../../hooks/use-asset-loader.hook";
-import { threeContext } from "../../providers/ThreeProvider";
 import { SimpleDropzone } from "simple-dropzone";
 import Input from "../Input";
 import "./MeshLoader.scss";
+import { useThreeStore } from "../../hooks/use-three-store.hook";
 
 const MeshLoader = () => {
   // let inputEl, dropZone;
   const inputEl = useRef(null);
   const dropZoneEl = useRef(null);
 
-  const { addMesh, addGraph } = useContext(threeContext);
-  const [loadAsset, asset, error, loading] = useAssetLoader(addMesh, addGraph);
+  const { addMesh, mesh } = useThreeStore();
+  const [loadAsset, asset, error, loading] = useAssetLoader(addMesh);
 
   // Sets up drag and drop controller
   useEffect(() => {
@@ -24,15 +24,15 @@ const MeshLoader = () => {
 
   useEffect(() => {
     if (asset) {
-      addMesh(asset.scene);
+      addMesh(asset);
     }
-  }, [asset, addMesh, addGraph]);
+  }, [asset, addMesh]);
 
   return (
-    <div className='meshLoader'>
-      <div ref={dropZoneEl} className='upload-form'>
+    <div className="meshLoader">
+      <div ref={dropZoneEl} className="upload-form">
         <h3>Drag & drop file, or click browse to upload</h3>
-        <Input type='file' setRef={inputEl} id='asset' name='3D-Asset' asset />
+        <Input type="file" setRef={inputEl} id="asset" name="3D-Asset" asset />
         {error ? <p>{error}</p> : <p></p>}
         {loading ? <p>Loading...</p> : <p></p>}
       </div>

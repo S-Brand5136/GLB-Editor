@@ -20,7 +20,8 @@
     "sass": "^1.49.0",
     "simple-dropzone": "^0.8.1",
     "three": "^0.137.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zustand": "^4.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

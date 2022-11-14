@@ -5,13 +5,13 @@ const DragInput = ({ value = 1, onChange, onMouseDown }) => {
   const setValue = useDragInput(value, onMouseDown);
   return (
     <Input
-      object
+      dragInput
       removeSpin
       type={"text"}
-      inputmode='numeric'
-      pattern='[0-9]*'
+      inputmode="numeric"
+      pattern="[0-9]*"
       step={0.01}
-      value={Number(value)}
+      value={Number(value).toFixed(3)}
       onMouseDown={setValue}
       onChange={(e) => {
         onChange(Number(e.target.value));

@@ -1,6 +1,6 @@
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { usePaneSelector } from "../../hooks/use-pane-selector.hook";
-import { threeContext } from "../../providers/ThreeProvider";
+import { useThreeStore } from "../../hooks/use-three-store.hook";
 import { GeometryWindow, MaterialWindow, ObjectWindow } from "../EditorMenus/";
 import Input from "../Input/Input";
 import OptionsSelector from "../OptionsSelector";
@@ -10,25 +10,22 @@ const ScenePane = () => {
   const { selectedOption, setSelectedOption } = usePaneSelector("OBJECT");
   const [meshChildren, setMeshChildren] = useState(null);
   const {
-    mesh,
     changeBackground,
-    background,
     resetBackground,
+    background,
+    mesh,
     selectedMesh,
-    setSelectedMesh,
     renderScene,
-  } = useContext(threeContext);
+  } = useThreeStore();
 
   // background input
   const [backgroundType, setBackgroundType] = useState("");
 
   useEffect(() => {
-    if (mesh.current && !selectedMesh) {
+    if (mesh?.scene && !selectedMesh) {
       const meshArr = [];
 
-      setSelectedMesh(mesh.current.children[0]);
-
-      mesh.current.traverse((child) => {
+      mesh?.scene.traverse((child) => {
         if (child.parent === null) {
           child.userData["mesh_parent"] = true;
         }
@@ -53,7 +50,9 @@ const ScenePane = () => {
                     selectedMesh?.uuid === child.uuid ? "selected" : ""
                   }`}
                   key={child.uuid}
-                  onClick={() => setSelectedMesh(child)}
+                  onClick={() =>
+                    useThreeStore.setState({ selectedMesh: child })
+                  }
                 >
                   <div>
                     <div className="mesh-prefix"></div>

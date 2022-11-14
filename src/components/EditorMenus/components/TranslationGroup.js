@@ -1,10 +1,6 @@
 import DragInput from "./DragInput";
 
 const TranslationGroup = ({ type, translation, onChange, onMouseDown }) => {
-  const [xValue, setXValue] = useState(translation.x);
-  const [yValue, setYValue] = useState(translation.y);
-  const [zValue, setZValue] = useState(translation.z);
-
   if (!translation) {
     return;
   }

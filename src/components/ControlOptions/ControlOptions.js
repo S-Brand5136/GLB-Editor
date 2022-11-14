@@ -1,17 +1,16 @@
-import React, { useContext } from "react";
 import {
   AiOutlineExpandAlt,
   AiOutlineDrag,
   AiOutlineRotateRight,
 } from "react-icons/ai";
-import { threeContext } from "../../providers/ThreeProvider";
+import { useThreeStore } from "../../hooks/use-three-store.hook";
 import "./ControlOptions.scss";
 
 const ControlOptions = () => {
-  const { controlType, setControlType } = useContext(threeContext);
+  const { controlType } = useThreeStore();
 
   const modeSelectHandler = (type) => {
-    return (event) => setControlType(type);
+    return (event) => useThreeStore.setState({ controlType: type });
   };
 
   const isSelected = (type) => {
@@ -21,21 +20,21 @@ const ControlOptions = () => {
   return (
     <aside>
       <button
-        title='Translate'
+        title="Translate"
         className={isSelected("translate") ? "selected" : ""}
         onClick={modeSelectHandler("translate")}
       >
         <AiOutlineDrag />
       </button>
       <button
-        title='Rotate'
+        title="Rotate"
         className={isSelected("rotate") ? "selected" : ""}
         onClick={modeSelectHandler("rotate")}
       >
         <AiOutlineRotateRight />
       </button>
       <button
-        title='Scale'
+        title="Scale"
         className={isSelected("scale") ? "selected" : ""}
         onClick={modeSelectHandler("scale")}
       >
