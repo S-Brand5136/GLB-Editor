@@ -9,5 +9,9 @@ section.settings-menu {
     
     div.row {
         @include mixins.flex-row;
+
+        span {
+            padding-left: 1rem;
+        }
     }
 }

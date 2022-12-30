@@ -93,7 +93,7 @@ const SettingsPane = () => {
       />
       {showGrid && (
         <Row
-          title={<span style={{ paddingLeft: "1rem" }}>Infinite Grid</span>}
+          title={<span>Infinite Grid</span>}
           body={
             <Input
               type="checkbox"

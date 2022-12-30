@@ -171,7 +171,7 @@ const ExportPane = () => {
           />
         }
       />
-      <button onClick={exportHandler}>Export Object</button>
+      <button onClick={exportHandler}>Export Scene</button>
     </section>
   );
 };
