@@ -5,7 +5,7 @@ import {
   GizmoHelper,
   GizmoViewport,
   OrbitControls,
-  Plane,
+  Grid,
   Select,
   TransformControls,
   useHelper,
@@ -26,7 +26,7 @@ const UserObject = ({ mesh, transformMesh }) => {
 const Editor = () => {
   const [orbitControlsEnabled, setOrbitControlsEnabled] = useState(true);
 
-  const { mesh, showGrid, selectedMesh, controlType, showGizmo } =
+  const { mesh, showGrid, infinteGrid, selectedMesh, controlType, showGizmo } =
     useThreeStore();
 
   const background = useThreeStore((state) => state.background);
@@ -79,13 +79,20 @@ const Editor = () => {
       </Center>
       {/* Grid */}
       {showGrid && (
-        <Plane
-          rotation-x={Math.PI / 2}
+        <Grid
           position-y={-0.15}
-          args={[20, 20, 10, 10]}
-        >
-          <meshPhongMaterial wireframe />
-        </Plane>
+          args={[10.5, 10.5]}
+          cellSize={0.35}
+          cellThickness={1}
+          cellColor="#6f6f6f"
+          sectionSize={2.75}
+          sectionThickness={1.5}
+          fadeDistance={10}
+          fadeStrength={1}
+          followCamera={false}
+          infiniteGrid={infinteGrid}
+          receiveShadow
+        />
       )}
       {/* Gizmo */}
       {showGizmo && (
