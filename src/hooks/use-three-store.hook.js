@@ -8,7 +8,15 @@ export const useThreeStore = create((set, get) => ({
   mesh: null,
   selectedMesh: null,
   showGrid: false,
+  showGizmo: false,
   renderScene: false,
+  enableLinear: false,
+  enableFlat: false,
+  enableLegacy: false,
+  // preserver drawing buffer
+  enbalePDB: false,
+  // logarithmic depth buffer
+  enableLDP: false,
   controlType: "translate",
   addMesh: (glb) => {
     set(() => ({

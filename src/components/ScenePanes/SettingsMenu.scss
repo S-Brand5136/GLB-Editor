@@ -1,0 +1,13 @@
+@use "../../scss/_variables.scss";
+@use "../../scss/_mixins.scss";
+
+section.settings-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    
+    div.row {
+        @include mixins.flex-row;
+    }
+}

@@ -8,14 +8,29 @@ import { useThreeStore } from "../../hooks/use-three-store.hook";
 
 const Viewer = () => {
   let viewerClass = classNames("viewer", {});
-  const { renderScene } = useThreeStore();
+  const {
+    renderScene,
+    enablePDB,
+    enableLDP,
+    enableLinear,
+    enableFlat,
+    enableLegacy,
+  } = useThreeStore();
 
   return (
     <main className={viewerClass}>
       {!renderScene ? (
         <MeshLoader />
       ) : (
-        <Canvas>
+        <Canvas
+          gl={{
+            preserveDrawingBuffer: enablePDB,
+            logarithmicDepthBuffer: enableLDP,
+          }}
+          linear={enableLinear}
+          flat={enableFlat}
+          legacy={enableLegacy}
+        >
           <Editor />
         </Canvas>
       )}

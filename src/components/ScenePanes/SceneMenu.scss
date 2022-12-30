@@ -16,10 +16,11 @@ section.scene-menu {
   }
 
   div.mesh-window {
+    @include mixins.webkit-scrollbar;
     background: variables.$secondary-highlight;
     height: 10rem;
     width: 17.5rem;
-    overflow: scroll;
+    overflow-y: auto;
 
     
     div {

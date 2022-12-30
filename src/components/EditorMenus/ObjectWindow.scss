@@ -6,23 +6,9 @@ div.object-window {
     flex-direction: column;
     width: 100%;
     padding: 1rem;
-    user-select: none;
 
     div.row {
-        margin: 0.5rem 0 0.5rem 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        width: 100%;
-        padding-right: 1rem;
-        
-        h4 {
-            font-weight: 300;
-            display: inline-block;
-            margin: 0;
-            flex: 1;
-        }
-        
+        @include mixins.flex-row;
         
         div {
             display: inline-flex;

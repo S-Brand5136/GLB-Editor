@@ -11,7 +11,6 @@ import {
   useHelper,
 } from "@react-three/drei";
 import { BoxHelper } from "three";
-import { useFrame } from "@react-three/fiber";
 import { useThreeStore } from "../../hooks/use-three-store.hook";
 
 const UserObject = ({ mesh, transformMesh }) => {
@@ -27,7 +26,8 @@ const UserObject = ({ mesh, transformMesh }) => {
 const Editor = () => {
   const [orbitControlsEnabled, setOrbitControlsEnabled] = useState(true);
 
-  const { mesh, showGrid, selectedMesh, controlType } = useThreeStore();
+  const { mesh, showGrid, selectedMesh, controlType, showGizmo } =
+    useThreeStore();
 
   const background = useThreeStore((state) => state.background);
   const isTexture = useThreeStore((state) => state.isTexture);
@@ -88,12 +88,14 @@ const Editor = () => {
         </Plane>
       )}
       {/* Gizmo */}
-      <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
-        <GizmoViewport
-          axisColors={["red", "green", "blue"]}
-          labelColor="black"
-        />
-      </GizmoHelper>
+      {showGizmo && (
+        <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
+          <GizmoViewport
+            axisColors={["red", "green", "blue"]}
+            labelColor="black"
+          />
+        </GizmoHelper>
+      )}
     </>
   );
 };

@@ -17,3 +17,31 @@
     opacity: 0.5;
   }
 }
+
+@mixin webkit-scrollbar {
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: #aaa;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #000; 
+  }
+}
+
+@mixin flex-row() {
+  margin: 0.5rem 0 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding-right: 1rem;
+  align-items: center;
+
+  h4 {
+    font-weight: 300;
+    display: inline-block;
+    margin: 0;
+    flex: 1;
+  }
+}
