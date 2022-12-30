@@ -23,6 +23,7 @@ const Viewer = () => {
         <MeshLoader />
       ) : (
         <Canvas
+          shadows
           gl={{
             preserveDrawingBuffer: enablePDB,
             logarithmicDepthBuffer: enableLDP,
