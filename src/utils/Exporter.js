@@ -1,6 +1,6 @@
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter";
 
-export class Exporter extends GLTFLoader {
+export class Exporter extends GLTFExporter {
   constructor(
     trs = false,
     onlyVisible = true,
@@ -24,43 +24,40 @@ export class Exporter extends GLTFLoader {
   }
 
   exportFile(input) {
+    const save = (blob, fileName) => {
+      const link = document.createElement("a");
+      link.style.display = "none";
+      document.body.appendChild(link); // Firefox workaround
+
+      link.href = URL.createObjectURL(blob);
+      link.download = fileName;
+      link.click();
+
+      link.remove();
+    };
+
+    const saveGlb = (buffer, fileName) => {
+      save(new Blob([buffer], { type: "application/octet-stream" }), fileName);
+    };
+
+    const saveGltf = (text, fileName) => {
+      save(new Blob([text], { type: "text/plain" }), fileName);
+    };
+
     this.parse(
       input,
       function (result) {
         if (result instanceof ArrayBuffer) {
-          this.saveGlb(result, "scene.glb");
+          saveGlb(result, "scene.glb");
         }
 
         const output = JSON.stringify(result, null, 2);
-        this.saveGltf(output, "scene.gltf");
+        saveGltf(output, "scene.gltf");
       },
       function (error) {
-        return { message: "An error happened during parsing", error };
+        console.log("An error happened");
       },
       this.options
     );
-  }
-
-  #save(blob, fileName) {
-    const link = document.createElement("a");
-    link.style.display = "none";
-    document.body.appendChild(link); // Firefox workaround
-
-    link.href = URL.createObjectURL(blob);
-    link.download = fileName;
-    link.click();
-
-    link.remove();
-  }
-
-  saveGlb(buffer, fileName) {
-    this.#save(
-      new Blob([buffer], { type: "application/octet-stream" }),
-      fileName
-    );
-  }
-
-  saveGltf(text, fileName) {
-    this.#save(new Blob([text], { type: "text/plain" }), fileName);
   }
 }
