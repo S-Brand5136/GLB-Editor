@@ -22,7 +22,7 @@ const ScenePane = () => {
   const [backgroundType, setBackgroundType] = useState("");
 
   useEffect(() => {
-    if (mesh?.scene && !selectedMesh) {
+    if (mesh?.scene && !meshChildren) {
       const meshArr = [];
 
       mesh?.scene.traverse((child) => {
