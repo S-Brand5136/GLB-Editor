@@ -62,13 +62,8 @@ section.scene-menu {
     }
     
     select {
+      @include mixins.custom-select;
       min-width: 8rem;
-      border: none;
-      background: variables.$secondary-highlight;
-      color: variables.$primary;
-      font-size: 0.9em;
-      padding-left: 0.25rem;
-      padding: 0.25rem;
     }
 
     label {

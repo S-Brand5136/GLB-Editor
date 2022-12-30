@@ -12,6 +12,7 @@ const SettingsPane = () => {
     enableLinear,
     enableFlat,
     enableLegacy,
+    infinteGrid,
   } = useThreeStore();
 
   return (
@@ -90,6 +91,20 @@ const SettingsPane = () => {
           />
         }
       />
+      {showGrid && (
+        <Row
+          title={<span style={{ paddingLeft: "1rem" }}>Infinite Grid</span>}
+          body={
+            <Input
+              type="checkbox"
+              onChange={(e) => {
+                useThreeStore.setState({ infinteGrid: !infinteGrid });
+              }}
+              isChecked={infinteGrid}
+            />
+          }
+        />
+      )}
       <Row
         title={"Enable Gizmo"}
         body={

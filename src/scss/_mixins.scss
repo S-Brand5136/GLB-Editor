@@ -18,6 +18,19 @@
   }
 }
 
+@mixin custom-select {
+  border: none;
+  background: variables.$secondary-highlight;
+  color: variables.$primary;
+  font-size: 0.9em;
+  padding-left: 0.25rem;
+  padding: 0.25rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 @mixin webkit-scrollbar {
   &::-webkit-scrollbar {
     width: 5px;
@@ -30,17 +43,13 @@
 }
 
 @mixin flex-row() {
-  margin: 0.5rem 0 0.5rem 0;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  margin: 0.5rem 0 0.5rem 0;
   width: 100%;
   padding-right: 1rem;
-  align-items: center;
 
   h4 {
     font-weight: 300;
-    display: inline-block;
     margin: 0;
     flex: 1;
   }

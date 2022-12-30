@@ -1,2 +1,33 @@
+@use "../../scss/_variables.scss";
+@use "../../scss/_mixins.scss";
+
 section.export-menu {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+    
+    div.row {
+        @include mixins.flex-row;
+    }
+
+    button {
+        border: none;
+        padding: 0.25rem 0 0.25rem 0;
+        background: variables.$secondary;
+        color: variables.$font-light-gray;
+
+        &:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        &:active {
+            opacity: 0.65;
+        }
+    }
+
+    select {
+        @include mixins.custom-select;
+    }
 }
