@@ -1,0 +1,27 @@
+@use "../../scss/_variables.scss";
+@use "../../scss/_mixins.scss";
+
+div.geometry-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+
+    button {
+        @include mixins.basic-button;
+    }
+
+    div.row {
+        @include mixins.flex-row;
+   
+
+        div {
+            display: inline-flex;
+            flex: 1;
+
+            span {
+                margin: 0 0.5rem 0 0.5rem;
+            }
+        }
+    }
+}

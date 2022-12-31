@@ -12,20 +12,7 @@ section.export-menu {
     }
 
     button {
-        border: none;
-        margin-top: 1rem;
-        padding: 0.25rem 0 0.25rem 0;
-        background: variables.$secondary;
-        color: variables.$font-light-gray;
-
-        &:hover {
-            opacity: 0.8;
-            cursor: pointer;
-        }
-
-        &:active {
-            opacity: 0.65;
-        }
+        @include mixins.basic-button;
     }
 
     select {
