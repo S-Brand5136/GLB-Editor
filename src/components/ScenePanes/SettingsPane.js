@@ -55,7 +55,7 @@ const SettingsPane = () => {
         }
       />
       <Row
-        title={"Enable Preserve Drawing Bugger"}
+        title={"Enable Preserve Drawing Buffer"}
         body={
           <Input
             type="checkbox"
