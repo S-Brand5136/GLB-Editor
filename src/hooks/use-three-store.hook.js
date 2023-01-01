@@ -9,7 +9,7 @@ export const useThreeStore = create((set, get) => ({
   selectedMesh: null,
   showGrid: true,
   infinteGrid: false,
-  showGizmo: false,
+  showGizmo: true,
   renderScene: false,
   enableLinear: false,
   enableFlat: false,

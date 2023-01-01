@@ -1,11 +1,15 @@
 @use "../../scss/_variables.scss";
 @use "../../scss/_mixins.scss";
 
-div.object-window {
+div.editor-menu {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 1rem;
+
+    button {
+        @include mixins.basic-button;
+    }
 
     div.row {
         @include mixins.flex-row;
@@ -28,5 +32,16 @@ div.object-window {
                 outline: none;
             }
         }
+
+        canvas {
+            @include mixins.clickable-element();
+            width: 8rem;
+        }
     }
+}
+
+div.editor-menu.material {
+    @include mixins.webkit-scrollbar;
+
+    overflow-y: scroll;
 }

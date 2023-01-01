@@ -1,16 +1,16 @@
 import Row from "./components/Row";
 import Input from "../Input/Input";
-import "./ObjectWindow.scss";
 import TranslationGroup from "./components/TranslationGroup";
 import { useObjectStates } from "../../hooks/use-object-states.hook";
 import { useThreeStore } from "../../hooks/use-three-store.hook";
+import "./EditorMenu.scss";
 
 const ObjectWindow = () => {
   const { selectedMesh } = useThreeStore();
   const { tools } = useObjectStates(selectedMesh);
 
   if (!selectedMesh) {
-    return <></>;
+    return <h4>Select an Object to begin editing</h4>;
   }
 
   const updateTranslation = (vector, value, type) => {
@@ -30,7 +30,7 @@ const ObjectWindow = () => {
   };
 
   return (
-    <div className="object-window">
+    <div className="editor-menu">
       <Row title={"Type"} body={<h4>{selectedMesh.type}</h4>} />
       <Row
         title={"UUID"}

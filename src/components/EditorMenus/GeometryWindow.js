@@ -1,21 +1,13 @@
 import { useThreeStore } from "../../hooks/use-three-store.hook";
 import Input from "../Input/Input";
 import Row from "./components/Row";
-import "./GeometryWindow.scss";
+import "./EditorMenu.scss";
 
 const GeometryWindow = () => {
   const { selectedMesh } = useThreeStore();
 
-  if (!selectedMesh) {
-    return <></>;
-  }
-
   if (!selectedMesh?.geometry) {
-    return (
-      <div className="geometry-menu">
-        <h4>No available geometry</h4>
-      </div>
-    );
+    return <h4>No available geometry</h4>;
   }
 
   const copyAsJson = () => {
@@ -32,7 +24,7 @@ const GeometryWindow = () => {
   };
 
   return (
-    <div className="geometry-menu">
+    <div className="editor-menu">
       <Row title={"Type"} body={<h4>{selectedMesh.geometry.type}</h4>} />
       <Row
         title={"UUID"}
