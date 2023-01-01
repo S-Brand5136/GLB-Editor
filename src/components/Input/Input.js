@@ -22,6 +22,8 @@ const Input = (props) => {
       onClick={props.onClick}
       value={props.value}
       step={props.step}
+      min={props.min}
+      max={props.max}
       disabled={props.disabled}
       onMouseDown={props.onMouseDown}
       inputMode={props.inputMode}

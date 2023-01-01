@@ -4,6 +4,7 @@ import { useThreeStore } from "../../hooks/use-three-store.hook";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import Input from "../Input/Input";
 import Row from "./components/Row";
+import { useState } from "react";
 
 const MaterialWindow = () => {
   const { selectedMesh } = useThreeStore();
@@ -12,6 +13,11 @@ const MaterialWindow = () => {
   const metalnessRef = useRef();
   const roughnessRef = useRef();
   const aoRef = useRef();
+  const [materialIntensities, setMaterialIntensities] = useState({
+    roughnes: selectedMesh?.material.roughness,
+    metalness: selectedMesh?.material.metalnesss,
+    emissiveIntensity: selectedMesh?.material.emissiveIntensity,
+  });
   const reader = new FileReader();
   const loader = new TextureLoader();
   const image = new Image();
@@ -57,7 +63,7 @@ const MaterialWindow = () => {
         console.log(error);
       }
     }
-  }, [selectedMesh]);
+  }, []);
 
   if (!selectedMesh || !selectedMesh?.material) {
     return <h4>No available material</h4>;
@@ -104,23 +110,104 @@ const MaterialWindow = () => {
       />
       <Row
         title={"Color"}
-        body={<h4>{selectedMesh.material.color.getHexString()}</h4>}
+        body={
+          <>
+            <Input
+              darkBackground
+              removeSpin
+              type="color"
+              onChange={(e) => {
+                selectedMesh.material.color.set(e.target.value);
+              }}
+              id={"material-color"}
+            />
+            <label
+              htmlFor="material-color"
+              style={{
+                background: "#" + selectedMesh.material.color.getHexString(),
+              }}
+            />
+          </>
+        }
       />
       <Row
         title={"Emissive"}
-        body={<h4>{selectedMesh.material.emissive.getHexString()}</h4>}
+        body={
+          <>
+            <Input
+              darkBackground
+              removeSpin
+              type="color"
+              onChange={(e) => {
+                selectedMesh.material.emissive.set(e.target.value);
+              }}
+              id={"emissive-color"}
+            />
+            <label
+              htmlFor="emissive-color"
+              style={{
+                background: "#" + selectedMesh.material.emissive.getHexString(),
+              }}
+            />
+          </>
+        }
       />
       <Row
         title={"Emissive Intensity"}
-        body={<h4>{selectedMesh.material.metalness}</h4>}
+        body={
+          <Input
+            darkBackground
+            step={0.1}
+            min={0}
+            max={1}
+            type="number"
+            onChange={(e) => {
+              selectedMesh.material.emissiveIntensity = e.target.value;
+              setMaterialIntensities((curr) => {
+                return { ...curr, emissiveIntensity: e.target.value };
+              });
+            }}
+            value={materialIntensities.emissiveIntensity}
+          />
+        }
       />
       <Row
         title={"Metalness"}
-        body={<h4>{selectedMesh.material.metalness}</h4>}
+        body={
+          <Input
+            darkBackground
+            step={0.1}
+            min={0}
+            max={1}
+            type="number"
+            onChange={(e) => {
+              selectedMesh.material.metalness = e.target.value;
+              setMaterialIntensities((curr) => {
+                return { ...curr, metalness: e.target.value };
+              });
+            }}
+            value={materialIntensities.metalness}
+          />
+        }
       />
       <Row
         title={"Roughness"}
-        body={<h4>{selectedMesh.material.roughness}</h4>}
+        body={
+          <Input
+            darkBackground
+            step={0.1}
+            min={0}
+            max={1}
+            type="number"
+            onChange={(e) => {
+              selectedMesh.material.roughness = e.target.value;
+              setMaterialIntensities((curr) => {
+                return { ...curr, roughnes: e.target.value };
+              });
+            }}
+            value={materialIntensities.roughnes}
+          />
+        }
       />
       <h4>Maps</h4>
       <Row
