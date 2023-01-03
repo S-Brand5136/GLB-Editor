@@ -47,10 +47,10 @@ const Editor = () => {
 
       {/* Lights */}
       <ambientLight intensity={1} />
-      <directionalLight color="white" position={[-2, -3, 5]} />
+      <directionalLight color='white' position={[-2, -3, 5]} />
       {/* Backgrounds */}
       {background && !isTexture && (
-        <color attach="background" args={[background]} />
+        <color attach='background' args={[background]} />
       )}
       {isTexture && (
         <Environment
@@ -63,20 +63,18 @@ const Editor = () => {
           files={background}
         />
       )}
-      <Center>
-        {/* Mesh */}
-        <Select
-          box
-          multiple
-          onChange={(selectedArr) =>
-            selectedArr.length > 0
-              ? useThreeStore.setState({ selectedMesh: selectedArr[0] })
-              : useThreeStore.setState({ selectedMesh: null })
-          }
-        >
-          <UserObject mesh={mesh} transformMesh={selectedMesh} />
-        </Select>
-      </Center>
+      {/* Mesh */}
+      <Select
+        box
+        multiple
+        onChange={(selectedArr) =>
+          selectedArr.length > 0
+            ? useThreeStore.setState({ selectedMesh: selectedArr[0] })
+            : useThreeStore.setState({ selectedMesh: null })
+        }
+      >
+        <UserObject mesh={mesh} transformMesh={selectedMesh} />
+      </Select>
       {/* Grid */}
       {showGrid && (
         <Grid
@@ -84,7 +82,7 @@ const Editor = () => {
           args={[10.5, 10.5]}
           cellSize={0.35}
           cellThickness={1}
-          cellColor="#6f6f6f"
+          cellColor='#6f6f6f'
           sectionSize={2.75}
           sectionThickness={1.5}
           fadeDistance={10}
@@ -96,10 +94,10 @@ const Editor = () => {
       )}
       {/* Gizmo */}
       {showGizmo && (
-        <GizmoHelper alignment="bottom-right" margin={[80, 80]}>
+        <GizmoHelper alignment='bottom-right' margin={[80, 80]}>
           <GizmoViewport
             axisColors={["red", "green", "blue"]}
-            labelColor="black"
+            labelColor='black'
           />
         </GizmoHelper>
       )}
