@@ -1,70 +1,44 @@
 # GLB Editor
 
-- Drag and drop Glb files to view mesh in react three fiber
+- Drag and drop Glb files to view and edit with threejs
+
+I created this as a way to have all of my favourite features from the online threejs editor and model-viewer editor in one place. As well as to quickly test glb files and textures within an enviroment that is easily customised.
 
 ## Demo 
 
-- Demo hosted on [Vercel here](https://glb-edior.vercel.app/)
+- Demo hosted on [Vercel](https://glb-edior.vercel.app/)
+## Set-up
+
+- Git clone this repo
+```bash
+  $ git clone git@github.com:S-Brand5136/GLB-Edior.git
+```
+
+- Inside of your terminal, move into root directory, and run npm install followed by npm run start
+
+```bash
+  $ cd ./GLB-Editor
+  $ npm i
+  $ npm run start
+```
+
+- Open up browser and go to localhost:3000
+
 
 ## Todo List
 - A list of all the features to be added
 
-### Uploading
+  ### Uploading
   - [] Add support for compressed files (KTX2, Draco)
   - [] Add support for OBJ, MMD, MTLL
-  - [] Add more descriptive error messages for loading failures
-### Scene Pane
-  - [x] Add menu to pick between each mesh loaded into scene
-  - [x] Add drop down to change background color
-  
-  - Mesh editor Menu
-    - Object Menu
-      - [] Show Type
-      - [] Text input for UUID
-      - [] Text input for Name
-      - [] Show Input group to change Position 
-      - [] Show Input group to change Rotation 
-      - [] Show Input group to change Scale 
-      - [] Enable Shodow radio button
-      - [] Visibility radio button
+  - [] Add more descriptive error messages for loading failure
 
-    - Material Menu
-      - [] Upload Texture map
-      - [] Upload Metal Map
-      - [] Upload Roughness Map
-      - [] Texture Colour picker window
-      - [] Visibility radio button
-
-### Export Pane
-
-  - [] Add button to export scene 
-  - [] Add menu for export settings
-    - [] trs
-    - [] only visible meshes
-    - [] truncateDrawRange
-    - [] binary
-    - [] maxTextureSize
-    - [] animations
-    - [] forceIndicies
-    - [] IncludeCustomExtensions
-  - [] Possibily estimate file size?
-
-### Settings Pane
-
-  - View port
-    -  [] Grid
-  - [] Remove all items
-  - [] Adjust lighting
-    - [] overall brightness
-    - [] individual lighting nodes
-
-### Testing to add
+  ### Unit Tests
   - File uplodaing
   - Panes
   - Exporting
 
 #### Referances
-
 - [Tree classes](https://www.30secondsofcode.org/articles/s/js-data-structures-tree)
 - [drag & drop](https://gltf-viewer.donmccurdy.com/)
 - [javascript yield](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield)
