@@ -14,9 +14,9 @@ const MaterialWindow = () => {
   const roughnessRef = useRef();
   const aoRef = useRef();
   const [materialIntensities, setMaterialIntensities] = useState({
-    roughnes: selectedMesh?.material.roughness,
-    metalness: selectedMesh?.material.metalnesss,
-    emissiveIntensity: selectedMesh?.material.emissiveIntensity,
+    roughnes: selectedMesh?.material?.roughness,
+    metalness: selectedMesh?.material?.metalnesss,
+    emissiveIntensity: selectedMesh?.material?.emissiveIntensity,
   });
   const reader = new FileReader();
   const loader = new TextureLoader();
@@ -41,23 +41,23 @@ const MaterialWindow = () => {
       try {
         drawToCanvas(
           mapRef.current.getContext("2d"),
-          selectedMesh.material.map.source.data
+          selectedMesh.material?.map?.source.data
         );
         drawToCanvas(
           normalRef.current.getContext("2d"),
-          selectedMesh.material.normalMap.source.data
+          selectedMesh.material?.normalMap?.source.data
         );
         drawToCanvas(
           metalnessRef.current.getContext("2d"),
-          selectedMesh.material.metalnessMap.source.data
+          selectedMesh.material?.metalnessMap?.source.data
         );
         drawToCanvas(
           roughnessRef.current.getContext("2d"),
-          selectedMesh.material.roughnessMap.source.data
+          selectedMesh.material?.roughnessMap?.source.data
         );
         drawToCanvas(
           aoRef.current.getContext("2d"),
-          selectedMesh.material.aoMap.source.data
+          selectedMesh.material?.aoMap?.source.data
         );
       } catch (error) {
         console.log(error);
@@ -96,7 +96,7 @@ const MaterialWindow = () => {
   };
 
   return (
-    <div className="editor-menu material">
+    <div className='editor-menu material'>
       <Row title={"Type"} body={<h4>{selectedMesh.material.type}</h4>} />
       <Row
         title={"UUID"}
@@ -115,14 +115,14 @@ const MaterialWindow = () => {
             <Input
               darkBackground
               removeSpin
-              type="color"
+              type='color'
               onChange={(e) => {
                 selectedMesh.material.color.set(e.target.value);
               }}
               id={"material-color"}
             />
             <label
-              htmlFor="material-color"
+              htmlFor='material-color'
               style={{
                 background: "#" + selectedMesh.material.color.getHexString(),
               }}
@@ -137,14 +137,14 @@ const MaterialWindow = () => {
             <Input
               darkBackground
               removeSpin
-              type="color"
+              type='color'
               onChange={(e) => {
                 selectedMesh.material.emissive.set(e.target.value);
               }}
               id={"emissive-color"}
             />
             <label
-              htmlFor="emissive-color"
+              htmlFor='emissive-color'
               style={{
                 background: "#" + selectedMesh.material.emissive.getHexString(),
               }}
@@ -160,7 +160,7 @@ const MaterialWindow = () => {
             step={0.1}
             min={0}
             max={1}
-            type="number"
+            type='number'
             onChange={(e) => {
               selectedMesh.material.emissiveIntensity = e.target.value;
               setMaterialIntensities((curr) => {
@@ -179,7 +179,7 @@ const MaterialWindow = () => {
             step={0.1}
             min={0}
             max={1}
-            type="number"
+            type='number'
             onChange={(e) => {
               selectedMesh.material.metalness = e.target.value;
               setMaterialIntensities((curr) => {
@@ -198,7 +198,7 @@ const MaterialWindow = () => {
             step={0.1}
             min={0}
             max={1}
-            type="number"
+            type='number'
             onChange={(e) => {
               selectedMesh.material.roughness = e.target.value;
               setMaterialIntensities((curr) => {
@@ -223,7 +223,7 @@ const MaterialWindow = () => {
               }}
               id={"map-upload"}
             />
-            <label htmlFor="map-upload">
+            <label htmlFor='map-upload'>
               <canvas ref={mapRef} />
             </label>
           </>
@@ -242,7 +242,7 @@ const MaterialWindow = () => {
               }}
               id={"normal-map-upload"}
             />
-            <label htmlFor="normal-map-upload">
+            <label htmlFor='normal-map-upload'>
               <canvas ref={normalRef} />
             </label>
           </>
@@ -261,7 +261,7 @@ const MaterialWindow = () => {
               }}
               id={"ao-map-upload"}
             />
-            <label htmlFor="ao-map-upload">
+            <label htmlFor='ao-map-upload'>
               <canvas ref={aoRef} />
             </label>
           </>
@@ -284,7 +284,7 @@ const MaterialWindow = () => {
               }}
               id={"roughness-map-upload"}
             />
-            <label htmlFor="roughness-map-upload">
+            <label htmlFor='roughness-map-upload'>
               <canvas ref={roughnessRef} />
             </label>
           </>
@@ -307,7 +307,7 @@ const MaterialWindow = () => {
               }}
               id={"metalness-map-upload"}
             />
-            <label htmlFor="metalness-map-upload">
+            <label htmlFor='metalness-map-upload'>
               <canvas ref={metalnessRef} />
             </label>
           </>
