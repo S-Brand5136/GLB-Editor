@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import { Canvas } from "@react-three/fiber";
 import MeshLoader from "../MeshLoader";
 
@@ -7,7 +6,6 @@ import Editor from "./Editor";
 import { useThreeStore } from "../../hooks/use-three-store.hook";
 
 const Viewer = () => {
-  let viewerClass = classNames("viewer", {});
   const {
     renderScene,
     enablePDB,
@@ -18,7 +16,7 @@ const Viewer = () => {
   } = useThreeStore();
 
   return (
-    <main className={viewerClass}>
+    <main className={"viewer"}>
       {!renderScene ? (
         <MeshLoader />
       ) : (

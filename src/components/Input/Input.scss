@@ -4,6 +4,10 @@ input[type=checkbox] {
   cursor: pointer;
 }
 
+input[type=file] {
+  cursor: pointer;
+}
+
 input.input{
 
   &:focus-visible {
@@ -75,7 +79,7 @@ input.input{
     }
 
       &[type=number] {
-        -moz-appearance:textfield; /* Firefox */
+        -moz-appearance: textfield; /* Firefox */
     }
   }
 }

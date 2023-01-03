@@ -1,10 +1,9 @@
 @use "../../scss/mixins.scss";
 
 .viewer {
-  height: 100vh;
-  width: auto;
+  height: 100%;
+  width: 100vw;
   background-color: #333333;
-  flex: 1;
   cursor: move; /* fallback if grab cursor is unsupported */
   cursor: grab;
   cursor: -moz-grab;

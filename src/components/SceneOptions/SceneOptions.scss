@@ -1,13 +1,18 @@
 @use "../../scss/_variables.scss";
 
 nav.scene-options {
+  position: sticky;
+  right: 0;
+  top: 0;
+  flex: 1;
   height: 100vh;
-  width: 18vw;
+  min-width: 21.5rem;
+  width: 21.5rem;
+  overflow-y: scroll;
   background-color: variables.$primary-dark;
   color: variables.$primary;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  overflow-y: auto;
 }

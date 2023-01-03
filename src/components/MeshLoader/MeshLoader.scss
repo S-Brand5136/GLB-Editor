@@ -4,19 +4,16 @@ div.meshLoader {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  margin: auto;
-  height: 100%;
-  width: 100%;
   color: $primary;
+  height: 100%;
 
   .upload-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
     border: 5px dashed $primary;
-    padding: 10rem;
+    height: 50vh;
+    width: 40vw;
   }
 }
